@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Template from "../template/Template";
 import Place from "../components/Place";
 import Places from "../components/Places";
 import { useState } from "react";
+import MyHeader from "../components/MyHeader";
+import Template from "../template/Template";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array

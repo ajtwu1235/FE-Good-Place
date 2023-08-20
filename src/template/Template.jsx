@@ -1,23 +1,19 @@
-import { Container, Nav, NavItem, Navbar } from "reactstrap";
-import { Outlet } from "react-router";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Container, Nav, NavItem, Navbar, NavLink } from "reactstrap";
+import { Outlet, Link } from "react-router-dom";
+import MyHeader from "../components/MyHeader";
+import Rectangle from "../components/Rectangle";
+
 const Template = () => {
   return (
     <>
-      <Navbar>
-        <Link to="/" className="navbar-brand">
-          Home
-        </Link>
-        <Nav>
-          <NavItem>
-            <Link to="/place">Place</Link>
-          </NavItem>
-        </Nav>
-      </Navbar>
+      <MyHeader />
+      <Rectangle />
       <Container fluid="md">
-        <Outlet></Outlet>
+        <Outlet />
       </Container>
     </>
   );
 };
+
 export default Template;

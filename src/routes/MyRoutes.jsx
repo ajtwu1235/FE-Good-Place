@@ -18,7 +18,7 @@ const MyRoutes = () => {
         />
         <Route path="/place" element={<Places places={myPlaces} />} />
         <Route path="/recommend" element={<Recommend />} />
-        <Route path="/page_detail" element={<Slider />} />
+        <Route path="/page_detail" element={<Slider places={myPlaces} />} />
       </Route>
     </Routes>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import PlaceMap from "./Map";
 
 const Information = () => {
   return (
@@ -7,7 +6,6 @@ const Information = () => {
       <div
         style={{
           marginTop: "80px",
-          // marginLeft: "121px",
         }}
       >
         <ul style={{ listStyleType: "none" }}>
@@ -35,7 +33,7 @@ const Information = () => {
             fontSize: "28px",
             fontStyle: "normal",
             fontWeight: 400,
-            lineHeight: "57px" /* 203.571% */,
+            lineHeight: "57px",
           }}
         >
           <li>주소 : </li>
@@ -44,7 +42,7 @@ const Information = () => {
           <li>가게 정보: </li>
           <li>추천 아이디 : </li>
         </ul>
-        <PlaceMap />
+        {/*<PlaceMap />*/}
         <hr />
       </div>
     </>

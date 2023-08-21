@@ -1,5 +1,4 @@
-import { Container } from "reactstrap";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import MyHeader from "../components/MyHeader";
 const Template = () => {
   return (

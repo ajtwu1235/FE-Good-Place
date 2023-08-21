@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../css/styles.css";
+import Information from "./Information";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -22,48 +23,54 @@ const responsive = {
 const sliderImageUrl = [
   //First image url
   {
-    url: "https://i2.wp.com/www.geeksaresexy.net/wp-content/uploads/2020/04/movie1.jpg?resize=600%2C892&ssl=1",
+    url: "https://github.com/PLAYDATA-GOOD-PLACE/FE-Good-Place/assets/87232411/f029942a-27a4-4121-a0bc-4cc3320ad1bb",
   },
   {
-    url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-kids-movies-2020-call-of-the-wild-1579042974.jpg?crop=0.9760858955588091xw:1xh;center,top&resize=480:*",
+    url: "https://github.com/PLAYDATA-GOOD-PLACE/FE-Good-Place/assets/87232411/f029942a-27a4-4121-a0bc-4cc3320ad1bb",
   },
   //Second image url
   {
-    url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-movies-for-kids-2020-sonic-the-hedgehog-1571173983.jpg?crop=0.9871668311944719xw:1xh;center,top&resize=480:*",
+    url: "https://github.com/PLAYDATA-GOOD-PLACE/FE-Good-Place/assets/87232411/f029942a-27a4-4121-a0bc-4cc3320ad1bb",
   },
   //Third image url
   {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQS82ET2bq9oTNwPOL8gqyoLoLfeqJJJWJmKQ&usqp=CAU",
+    url: "https://github.com/PLAYDATA-GOOD-PLACE/FE-Good-Place/assets/87232411/f029942a-27a4-4121-a0bc-4cc3320ad1bb",
   },
 
   //Fourth image url
 
   {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTdvuww0JDC7nFRxiFL6yFiAxRJgM-1tvJTxA&usqp=CAU",
+    url: "https://github.com/PLAYDATA-GOOD-PLACE/FE-Good-Place/assets/87232411/f029942a-27a4-4121-a0bc-4cc3320ad1bb",
   },
 ];
 const Slider = () => {
   return (
-    <div className="parent">
-      <Carousel
-        responsive={responsive}
-        autoPlay={true}
-        swipeable={true}
-        draggable={true}
-        showDots={true}
-        infinite={true}
-        partialVisible={false}
-        dotListClass="custom-dot-list-style"
+    <>
+      <div
+        className="parent"
+        style={{ width: "1366px", height: "5168px", margin: "auto" }}
       >
-        {sliderImageUrl.map((imageUrl, index) => {
-          return (
-            <div className="slider" key={index}>
-              <img src={imageUrl.url} alt="movie" />
-            </div>
-          );
-        })}
-      </Carousel>
-    </div>
+        <Carousel
+          responsive={responsive}
+          autoPlay={true}
+          swipeable={true}
+          draggable={true}
+          showDots={true}
+          infinite={true}
+          partialVisible={false}
+          dotListClass="custom-dot-list-style"
+        >
+          {sliderImageUrl.map((imageUrl, index) => {
+            return (
+              <div className="slider" key={index}>
+                <img src={imageUrl.url} alt="movie" />
+              </div>
+            );
+          })}
+        </Carousel>
+        <Information></Information>
+      </div>
+    </>
   );
 };
 export default Slider;

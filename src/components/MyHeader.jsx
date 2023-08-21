@@ -39,18 +39,24 @@ const MyHeader = () => {
           >
             <ul className="navbar-nav">
               <li className="nav-item" style={headerStyle}>
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/place"
-                >
-                  place
+                <Link className="nav-link active" aria-current="page" to="/">
+                  Home
                 </Link>
               </li>
               <li className="nav-item" style={headerStyle}>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <Link className="nav-link about us" to="#">
                   About Us
+                </Link>
+              </li>
+              <li className="nav-item" style={headerStyle}>
+                <Link className="nav-link story" to="#">
+                  Story
+                </Link>
+              </li>
+              <li className="nav-item" style={headerStyle}>
+                <Link className="nav-link list" to="#">
+                  List
                 </Link>
               </li>
               <li className="nav-item" style={headerStyle}>

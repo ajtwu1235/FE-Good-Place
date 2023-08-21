@@ -4,6 +4,7 @@ import { useState } from "react";
 import Template from "../template/Template";
 import Rectangle from "../components/Rectangle";
 import Recommend from "../components/Recommend";
+import Slider from "../components/Slider";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
@@ -17,6 +18,7 @@ const MyRoutes = () => {
         />
         <Route path="/place" element={<Places places={myPlaces} />} />
         <Route path="/recommend" element={<Recommend />} />
+        <Route path="/page_detail" element={<Slider />} />
       </Route>
     </Routes>
   );

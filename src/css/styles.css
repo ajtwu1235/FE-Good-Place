@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+
+}
+
+.slider {
+    margin:0 20px;
+    padding:2rem 0;
+    text-align: center;
+}
+
+.slider img {
+    width: 316px;
+    height: 422px;
+    border-radius:10px;
+}
+
+.react-multi-carousel-list {
+    padding: 0rem 0 2rem 0;
+}
+
+.custom-dot-list-style button{
+    border: none;
+    background: rgb(255, 68, 68);
+}
+.react-multi-carousel-dot.react-multi-carousel-dot--active button{
+    background: rgb(255, 68, 68) !important;
+}

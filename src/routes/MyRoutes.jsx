@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import Place from "../components/Place";
 import Places from "../components/Places";
 import { useState } from "react";
-import MyHeader from "../components/MyHeader";
 import Template from "../template/Template";
+import Rectangle from "../components/Rectangle";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
@@ -13,7 +12,7 @@ const MyRoutes = () => {
       <Route element={<Template />}>
         <Route
           path="/"
-          element={<Place places={myPlaces} setMyPlaces={setMyPlaces} />}
+          element={<Rectangle places={myPlaces} setMyPlaces={setMyPlaces} />}
         />
         <Route path="/place" element={<Places places={myPlaces} />} />
       </Route>

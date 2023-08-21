@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const MyHeader = () => {
   const headerStyle = {
     fontSize: "20px",
@@ -17,9 +19,9 @@ const MyHeader = () => {
             flex: "auto",
           }}
         >
-          <a className="navbar-brand" href="#" style={headerStyle}>
+          <Link className="navbar-brand" style={headerStyle} to="/">
             Good Place
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -37,18 +39,27 @@ const MyHeader = () => {
           >
             <ul className="navbar-nav">
               <li className="nav-item" style={headerStyle}>
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/place"
+                >
+                  place
+                </Link>
               </li>
               <li className="nav-item" style={headerStyle}>
-                <a className="nav-link about us" href="#">
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <Link className="nav-link about us" to="#">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="nav-item" style={headerStyle}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className="nav-link user">
-                  <img src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7" />
+                  <img
+                    src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7"
+                    alt={"img"}
+                  />
                 </a>
               </li>
             </ul>

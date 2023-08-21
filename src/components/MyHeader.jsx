@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router";
+
 const MyHeader = () => {
   const headerStyle = {
     fontSize: "20px",
@@ -6,13 +8,14 @@ const MyHeader = () => {
     lineHeight: "normal",
     margin: "auto",
   };
+  
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div
           className="container-fluid"
           style={{
-            width: "1225px",
+            width: "100%",
             height: "54.742px",
             flex: "auto",
           }}
@@ -20,6 +23,7 @@ const MyHeader = () => {
           <a className="navbar-brand" href="#" style={headerStyle}>
             Good Place
           </a>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -47,6 +51,16 @@ const MyHeader = () => {
                 </a>
               </li>
               <li className="nav-item" style={headerStyle}>
+                <a className="nav-link about us" href="#">
+                  Store
+                </a>
+              </li>
+              <li className="nav-item" style={headerStyle}>
+                <a className="nav-link about us" href="#">
+                  List
+                </a>
+              </li>
+              <li className="nav-item userbtn" style={headerStyle}>
                 <a className="nav-link user">
                   <img src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7" />
                 </a>

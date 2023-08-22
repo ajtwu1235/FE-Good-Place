@@ -1,5 +1,10 @@
+import MainRecommended from "./main/MainRecommended";
+import Manipulator from "bootstrap/js/src/dom/manipulator";
+import MainPopular from "./main/MainPopular";
+import MainShared from "./main/MainShared";
+
 const Rectangle = () => {
-  return (
+  return <>
     <div
       style={{
         width: "100%",
@@ -87,6 +92,10 @@ const Rectangle = () => {
         </form>
       </ul>
     </div>
-  );
+      <MainRecommended />
+      <MainPopular/>
+      <MainShared/>
+  </>
+
 };
 export default Rectangle;

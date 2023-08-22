@@ -5,26 +5,26 @@ import { useState } from "react";
 import MyHeader from "../components/MyHeader";
 import Template from "../template/Template";
 import Story from "../components/story/Story";
-import List from "../components/List";
-import Template2 from "../template/Template2";
+
+import Rectangle from "../components/Rectangle";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
 
   return (
-    <Routes>
-      <Route element={<Template />}>
-        <Route element={<Template2/>}>
-        <Route
-          path="/"
-          element={<Place places={myPlaces} setMyPlaces={setMyPlaces} />}
-        />
+
+      <Routes>
+        <Route element={<Template />}>
+          <Route path="/" element={<Rectangle />} />
+          <Route path="/place" element={<Places places={myPlaces} />} />
+          {/*<Route*/}
+          {/*    path="/recommend"*/}
+          {/*    element={<Recommend places={myPlaces} setMyPlaces={setMyPlaces} />}*/}
+          {/*/>*/}
+          {/*<Route path="/page_detail" element={<Slider places={myPlaces} />} />*/}
+          <Route path='/story' element={<Story/>}></Route>
         </Route>
-        <Route path="/place" element={<Places places={myPlaces} />} />
-        <Route path="/story" element={<Story></Story>}></Route>
-        <Route path="/list" element={<List></List>}></Route>
-      </Route>
-    </Routes>
+      </Routes>
   );
 };
 

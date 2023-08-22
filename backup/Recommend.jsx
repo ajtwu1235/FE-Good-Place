@@ -66,11 +66,13 @@ const Recommend = ({ setMyPlaces }) => {
   const placesPerPage = 5; // Number of places to show per page
   const [selectedPlaces, setSelectedPlaces] = useState([]);
 
-  const toggleSelectOne = (placeId) => {
-    const updatedSelectedPlaces = isSelected(placeId)
-      ? selectedPlaces.filter((id) => id !== placeId)
-      : [placeId];
-    setSelectedPlaces(updatedSelectedPlaces);
+  const toggleSelectAll = () => {
+    // If all places are already selected, clear selection. Otherwise, select all.
+    if (selectedPlaces.length === currentPlaces.length) {
+      setSelectedPlaces([]);
+    } else {
+      setSelectedPlaces(currentPlaces.map((place) => place.id));
+    }
   };
 
   const isSelected = (placeId) => selectedPlaces.includes(placeId);
@@ -209,7 +211,25 @@ const Recommend = ({ setMyPlaces }) => {
               </button>
             </form>
           </div>
-
+          <div>
+            {/* Add a button to select all results */}
+            <button
+              onClick={toggleSelectAll}
+              style={{
+                margin: "10px 0",
+                padding: "5px 10px",
+                borderRadius: "5px",
+                backgroundColor: "#A8A8A8",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              {selectedPlaces.length === currentPlaces.length
+                ? "Deselect All"
+                : "Select All"}
+            </button>
+          </div>
           <div>
             {/* Display search results */}
             {currentPlaces.map((place) => (
@@ -221,7 +241,12 @@ const Recommend = ({ setMyPlaces }) => {
                   cursor: "pointer",
                   backgroundColor: isSelected(place.id) ? "#F0F0F0" : "white", // Change background color if selected
                 }}
-                onClick={() => toggleSelectOne(place.id)} // Updated onClick handler
+                onClick={() => {
+                  const updatedSelectedPlaces = isSelected(place.id)
+                    ? selectedPlaces.filter((id) => id !== place.id)
+                    : [...selectedPlaces, place.id];
+                  setSelectedPlaces(updatedSelectedPlaces);
+                }}
               >
                 <h4>{place.place_name}</h4>
                 <p>{place.address_name}</p>

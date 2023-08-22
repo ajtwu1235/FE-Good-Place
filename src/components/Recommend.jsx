@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+} from "reactstrap";
 
 import { myAxios } from "../network/api";
 
@@ -54,6 +61,8 @@ const Recommend = ({ setMyPlaces }) => {
   const [modal, setModal] = useState(false);
   const [query, setQuery] = useState("");
   const [placesArray, setPlacesArray] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // Add state for current page
+  const placesPerPage = 5; // Number of places to show per page
 
   const toggle = () => setModal(!modal);
 
@@ -70,8 +79,14 @@ const Recommend = ({ setMyPlaces }) => {
     if (response.status === "success") {
       const newPlacesArray = response.body.documents;
       setPlacesArray(newPlacesArray);
+      setCurrentPage(1); // Reset current page to 1 when new data is fetched
     }
   };
+
+  const indexOfLastPlace = currentPage * placesPerPage;
+  const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
+  const currentPlaces = placesArray.slice(indexOfFirstPlace, indexOfLastPlace);
+
   return (
     <>
       <div
@@ -159,7 +174,7 @@ const Recommend = ({ setMyPlaces }) => {
           </div>
           {/* Display search results */}
           <div>
-            {placesArray.map((place) => (
+            {currentPlaces.map((place) => (
               <div
                 key={place.id}
                 style={{ padding: "10px", borderBottom: "1px solid #D9D9D9" }}
@@ -176,6 +191,33 @@ const Recommend = ({ setMyPlaces }) => {
                 </a>
               </div>
             ))}
+          </div>
+          {/* Pagination */}
+          <div className="text-center mt-3">
+            <Pagination>
+              <PaginationItem>
+                <PaginationLink first href="#" />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink previous href="#" />
+              </PaginationItem>
+              {/* Render page numbers */}
+              {[...Array(Math.ceil(placesArray.length / placesPerPage))].map(
+                (_, index) => (
+                  <PaginationItem key={index}>
+                    <PaginationLink onClick={() => setCurrentPage(index + 1)}>
+                      {index + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ),
+              )}
+              <PaginationItem>
+                <PaginationLink next href="#" />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink last href="#" />
+              </PaginationItem>
+            </Pagination>
           </div>
         </ModalBody>
         {/* ... (ModalFooter and other JSX components) */}

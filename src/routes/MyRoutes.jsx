@@ -12,12 +12,12 @@ const MyRoutes = () => {
   return (
     <Routes>
       <Route element={<Template />}>
-        <Route
-          path="/"
-          element={<Rectangle places={myPlaces} setMyPlaces={setMyPlaces} />}
-        />
+        <Route path="/" element={<Rectangle />} />
         <Route path="/place" element={<Places places={myPlaces} />} />
-        <Route path="/recommend" element={<Recommend />} />
+        <Route
+          path="/recommend"
+          element={<Recommend places={myPlaces} setMyPlaces={setMyPlaces} />}
+        />
         <Route path="/page_detail" element={<Slider places={myPlaces} />} />
       </Route>
     </Routes>

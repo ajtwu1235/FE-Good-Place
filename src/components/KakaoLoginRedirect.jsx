@@ -10,8 +10,6 @@ function KakaoLoginRedirect() {
     localStorage.setItem("token",token)
 
 
-
-
     window.location.href="/"
   return <></>;
 }

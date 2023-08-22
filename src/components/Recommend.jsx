@@ -58,22 +58,16 @@ const RotatedDiv = ({ onClick }) => {
   );
 };
 
-const Recommend = ({ setMyPlaces }) => {
+const Recommend = ({ setMyPlaces, places }) => {
   const [modal, setModal] = useState(false);
   const [query, setQuery] = useState("");
   const [placesArray, setPlacesArray] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // Add state for current page
-  const placesPerPage = 5; // Number of places to show per page
+  const [currentPage, setCurrentPage] = useState(1);
+  const placesPerPage = 3;
   const [selectedPlaces, setSelectedPlaces] = useState([]);
-
-  const toggleSelectOne = (placeId) => {
-    const updatedSelectedPlaces = isSelected(placeId)
-      ? selectedPlaces.filter((id) => id !== placeId)
-      : [placeId];
-    setSelectedPlaces(updatedSelectedPlaces);
-  };
-
-  const isSelected = (placeId) => selectedPlaces.includes(placeId);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const isSelected = (place) => selectedPlaces.includes(place);
 
   const toggle = () => setModal(!modal);
 
@@ -90,40 +84,41 @@ const Recommend = ({ setMyPlaces }) => {
     if (response.status === "success") {
       const newPlacesArray = response.body.documents;
       setPlacesArray(newPlacesArray);
-      setCurrentPage(1); // Reset current page to 1 when new data is fetched
+      setCurrentPage(1);
+      setMyPlaces(newPlacesArray);
     }
   };
 
   const indexOfLastPlace = currentPage * placesPerPage;
   const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
   const currentPlaces = placesArray.slice(indexOfFirstPlace, indexOfLastPlace);
-  const sendSelectedPlacesToServer = async () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      const selectedData = placesArray.filter((place) =>
-        selectedPlaces.includes(place.id),
-      );
+      const selectedPlacesData = JSON.stringify(selectedPlaces);
+      const params = new URLSearchParams();
+      params.append("selectedPlacesData", selectedPlacesData);
 
-      const selectedPlaceIds = selectedData.map((place) => place.id);
-
+      console.log(selectedPlacesData);
       const response = await axios.post(
-        "http://localhost:8080/api/v1/client/submit-selected-places",
-        {
-          selectedPlaceIds: selectedPlaceIds,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
+        "http://localhost:8080" +
+          `/api/v1/client/submit-selected-places?${params.toString()}`,
+        {},
+        { headers: { "Content-Type": "application/json" } },
       );
 
       if (response.status === 200) {
-        console.log("Selected places sent to the server successfully.");
+        setSuccessMessage("Selected places submitted successfully.");
+        console.log(successMessage);
       }
     } catch (error) {
-      console.error("Error sending selected places:", error);
+      setErrorMessage("Failed to submit selected places.");
+      console.log(errorMessage);
     }
   };
+
   return (
     <>
       <div
@@ -211,33 +206,66 @@ const Recommend = ({ setMyPlaces }) => {
           </div>
 
           <div>
-            {/* Display search results */}
-            {currentPlaces.map((place) => (
-              <div
-                key={place.id}
-                style={{
-                  padding: "10px",
-                  borderBottom: "1px solid #D9D9D9",
-                  cursor: "pointer",
-                  backgroundColor: isSelected(place.id) ? "#F0F0F0" : "white", // Change background color if selected
-                }}
-                onClick={() => toggleSelectOne(place.id)} // Updated onClick handler
-              >
-                <h4>{place.place_name}</h4>
-                <p>{place.address_name}</p>
-                <p>{place.phone}</p>
-                <a
-                  href={place.place_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <form onSubmit={handleSubmit}>
+              {/* Display search results */}
+              {currentPlaces.map((place) => (
+                <div
+                  key={place.id}
+                  style={{
+                    padding: "10px",
+                    borderBottom: "1px solid #D9D9D9",
+                    cursor: "pointer",
+                    backgroundColor: isSelected(place) ? "#F0F0F0" : "white", // Change background color if selected
+                  }}
+                  onClick={() => {
+                    const updatedSelectedPlaces = isSelected(place)
+                      ? selectedPlaces.filter(
+                          (selectedPlace) => selectedPlace.id !== place.id,
+                        )
+                      : [...selectedPlaces, place];
+                    setSelectedPlaces(updatedSelectedPlaces);
+                  }}
                 >
-                  Visit Website
-                </a>
+                  <h4>{place.place_name}</h4>
+                  <p>{place.address_name}</p>
+                  <p>{place.phone}</p>
+                  <a
+                    href={place.place_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit Website
+                  </a>
+                </div>
+              ))}
+              {/* Add a button to send selected places to the server */}
+              <div
+                style={{
+                  textAlign: "center",
+                  margin: "auto",
+                  marginTop: "10px",
+                }}
+              >
+                <button
+                  style={{
+                    width: "200px",
+                    height: "30px",
+                    background:
+                      "linear-gradient(90deg, #CD1A40 0%, #FF803C 100%)",
+                    borderRadius: "8px",
+                    color: "#FFF",
+                    textTransform: "uppercase",
+                    border: "none",
+                    boxShadow: "0px 5px 10px 0px rgba(205, 26, 64, 0.22)",
+                  }}
+                >
+                  Recommended
+                </button>
               </div>
-            ))}
+            </form>
           </div>
           {/* Pagination */}
-          <div className="text-center mt-3">
+          <div className="d-flex justify-content-center mt-3">
             <Pagination>
               <PaginationItem>
                 <PaginationLink first href="#" />
@@ -263,21 +291,6 @@ const Recommend = ({ setMyPlaces }) => {
               </PaginationItem>
             </Pagination>
           </div>
-          {/* Add a button to send selected places to the server */}
-          <button
-            onClick={sendSelectedPlacesToServer}
-            style={{
-              margin: "10px 0",
-              padding: "5px 10px",
-              borderRadius: "5px",
-              backgroundColor: "#CD1A40",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Send Selected Places to Server
-          </button>
         </ModalBody>
         {/* ... (ModalFooter and other JSX components) */}
       </Modal>

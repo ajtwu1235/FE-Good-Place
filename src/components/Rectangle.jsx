@@ -1,27 +1,4 @@
-import { myAxios } from "../network/api";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-const Rectangle = ({ setMyPlaces }) => {
-  const [query, setQuery] = useState("");
-
-  const navigate = useNavigate();
-  const onSubmitHandler = async (e) => {
-    e.preventDefault();
-    // setStatus("loading");
-
-    const response = await myAxios(
-      "/v2/local/search/keyword.json?query=" + query,
-      "GET",
-    );
-
-    console.log(response.body);
-
-    if (response.status === "success") {
-      const placesArray = response.body.documents;
-      setMyPlaces(placesArray);
-      navigate("/place");
-    }
-  };
+const Rectangle = () => {
   return (
     <div
       style={{
@@ -67,7 +44,7 @@ const Rectangle = ({ setMyPlaces }) => {
         >
           내가 추천한 맛집, 솔직한 리뷰
         </li>
-        <form className="d-flex" onSubmit={onSubmitHandler}>
+        <form className="d-flex">
           <input
             className="form-control me-2"
             type="search"
@@ -81,7 +58,6 @@ const Rectangle = ({ setMyPlaces }) => {
               backdropFilter: "blur(5px)",
               marginLeft: "92px",
             }}
-            onChange={(e) => setQuery(e.target.value)}
           />
           <button
             className="btn btn-outline-success"

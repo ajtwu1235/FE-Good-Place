@@ -218,12 +218,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                     backgroundColor: isSelected(place) ? "#F0F0F0" : "white", // Change background color if selected
                   }}
                   onClick={() => {
-                    const updatedSelectedPlaces = isSelected(place)
-                      ? selectedPlaces.filter(
-                          (selectedPlace) => selectedPlace.id !== place.id,
-                        )
-                      : [...selectedPlaces, place];
-                    setSelectedPlaces(updatedSelectedPlaces);
+                    setSelectedPlaces([place]); // Set the selected place as the only item in the array
                   }}
                 >
                   <h4>{place.place_name}</h4>

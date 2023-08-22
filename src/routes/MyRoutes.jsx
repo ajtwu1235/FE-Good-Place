@@ -4,6 +4,7 @@ import Places from "../components/Places";
 import { useState } from "react";
 import MyHeader from "../components/MyHeader";
 import Template from "../template/Template";
+import KakaoLoginRedirect from "../components/KakaoLoginRedirect";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
@@ -16,6 +17,7 @@ const MyRoutes = () => {
           element={<Place places={myPlaces} setMyPlaces={setMyPlaces} />}
         />
         <Route path="/place" element={<Places places={myPlaces} />} />
+        <Route path="/redirect" element={<KakaoLoginRedirect/>}></Route>
       </Route>
     </Routes>
   );

@@ -13,6 +13,7 @@ const MyHeader = () => {
     lineHeight: "normal",
     margin: "auto",
   };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,10 +56,7 @@ const MyHeader = () => {
               </li>
               <li className="nav-item" style={headerStyle}>
                 <a className="nav-link user">
-                  {/* <button  onClick={openModal}>
-                  <img src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7" />
-                  </button>
-                  <LoginModal isOpen={isModalOpen} onClose={closeModal}></LoginModal> */}
+              
 
       <Button variant="primary" onClick={() => setModalShow(true)} style={{ backgroundColor: 'transparent',border : 'none'  }}>
        <img src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7" />

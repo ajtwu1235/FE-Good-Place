@@ -7,48 +7,23 @@ import KakaoLoginButton from '../KakaoLoginBtn';
 
 const LoginModal=(props)=>{
 
-    const params = {
-        response_type: 'code',
-        client_id: "22ac53a08edfe311aa62c57173849aca",
-        redirect_uri: 'http://localhost:5000/callback/kakao',
+
+    const LoginFormStyle = {
+        margin: '60px 41px',
+  
     }
 
-    axios.get('https://kauth.kakao.com/oauth/authorize', { params })
-    .then(response => {
-      // 여기서 필요한 작업을 수행
-      console.log(response.data); // 예시로 응답 데이터 출력
-    })
-    .catch(error => {
-      console.error('Kakao login error:', error);
-    });
+    const ModalTitle={
+        fontSize : '40px',
+        textAlign: 'center',
+    } 
 
-    const [data,setData] = useState("")
-
-    const getData = async()=>{
-        const response = await axios.get(
-            "https://kauth.kakao.com/oauth/authorize",
-            {},
-            { headers: { "Content-Type": "application/json" } },
-          );
-
-          console.log(response)
+    const ModalContent = {
+        fontSize : '14px',
+        textAlign: 'center',
+        marginTop: '45px'
     }
 
-
-    const LoginStyle = {
-        margin: '93px 41px',
-       
-    }
-
-    const kakaoBtn ={
-        width: '302px',
-        height: '71px',
-        flexShrink: '0',
-        borderRadius: '50px',
-        background: '#FEF01B',
-        border : 'none'
-        
-    }
 
   return (
     <Modal
@@ -76,15 +51,15 @@ const LoginModal=(props)=>{
         </Modal.Title> */}
       </Modal.Header>
       <Modal.Body>
-        <div style={LoginStyle}>
-        <h4>로그인</h4>
-        <p>
+        <div style={LoginFormStyle}>
+        <h2 style={ModalTitle}>로그인</h2>
+        <p style={ModalContent}>
           로그인을 하면 맛집을 추천 할 수 있어요<br/>
           로그인해서 맛집을 알려주세요<br/>
           찡긋 찡긋 
         </p>
         <div>
-         <img src='C:\Users\playdata\gitRepo\FE-Good-Place\public\images\kakao-1.jpg'/>
+         {/* <img src='C:\Users\playdata\gitRepo\FE-Good-Place\public\images\kakao-1.jpg'/> */}
          <KakaoLoginButton/>
         </div>
         

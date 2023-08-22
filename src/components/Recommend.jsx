@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 
 import { myAxios } from "../network/api";
+import axios from "axios";
 
 const RotatedDiv = ({ onClick }) => {
   return (
@@ -98,7 +99,33 @@ const Recommend = ({ setMyPlaces }) => {
   const indexOfLastPlace = currentPage * placesPerPage;
   const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
   const currentPlaces = placesArray.slice(indexOfFirstPlace, indexOfLastPlace);
+  const sendSelectedPlacesToServer = async () => {
+    try {
+      const selectedData = placesArray.filter((place) =>
+        selectedPlaces.includes(place.id),
+      );
 
+      const selectedPlaceIds = selectedData.map((place) => place.id);
+
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/client/submit-selected-places",
+        {
+          selectedPlaceIds: selectedPlaceIds,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      if (response.status === 200) {
+        console.log("Selected places sent to the server successfully.");
+      }
+    } catch (error) {
+      console.error("Error sending selected places:", error);
+    }
+  };
   return (
     <>
       <div
@@ -261,6 +288,21 @@ const Recommend = ({ setMyPlaces }) => {
               </PaginationItem>
             </Pagination>
           </div>
+          {/* Add a button to send selected places to the server */}
+          <button
+            onClick={sendSelectedPlacesToServer}
+            style={{
+              margin: "10px 0",
+              padding: "5px 10px",
+              borderRadius: "5px",
+              backgroundColor: "#CD1A40",
+              color: "white",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Send Selected Places to Server
+          </button>
         </ModalBody>
         {/* ... (ModalFooter and other JSX components) */}
       </Modal>

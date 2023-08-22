@@ -1,4 +1,9 @@
-const RotatedDiv = () => {
+import React, { useState } from "react";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+
+import { myAxios } from "../network/api";
+
+const RotatedDiv = ({ onClick }) => {
   return (
     <div
       style={{
@@ -11,7 +16,9 @@ const RotatedDiv = () => {
         alignItems: "center",
         justifyContent: "center",
         margin: "0 60px",
+        cursor: "pointer", // Add cursor style to indicate it's clickable
       }}
+      onClick={onClick} // Attach the click event
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +50,28 @@ const RotatedDiv = () => {
   );
 };
 
-const Recommend = () => {
+const Recommend = ({ setMyPlaces }) => {
+  const [modal, setModal] = useState(false);
+  const [query, setQuery] = useState("");
+  const [placesArray, setPlacesArray] = useState([]);
+
+  const toggle = () => setModal(!modal);
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    const response = await myAxios(
+      "/v2/local/search/keyword.json?query=" + query,
+      "GET",
+    );
+
+    console.log(response.body);
+
+    if (response.status === "success") {
+      const newPlacesArray = response.body.documents;
+      setPlacesArray(newPlacesArray);
+    }
+  };
   return (
     <>
       <div
@@ -89,9 +117,69 @@ const Recommend = () => {
       </div>
       <div style={{ textAlign: "center" }} className="place insert">
         {[1, 2, 3].map((item) => (
-          <RotatedDiv key={item} />
+          <RotatedDiv key={item} onClick={toggle} />
         ))}
       </div>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>식당 등록</ModalHeader>
+        <ModalBody>
+          <div style={{}}>
+            <form className="d-flex" onSubmit={onSubmitHandler}>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                style={{
+                  width: "594px",
+                  height: "40px",
+                  borderRadius: "10px",
+                  background: "rgba(255, 255, 255, 0.85)",
+                  backdropFilter: "blur(5px)",
+                }}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                style={{
+                  borderRadius: "10px",
+                  background:
+                    "linear-gradient(90deg, #CD1A40 0%, #FF803C 100%)",
+                  boxShadow: "0px 5px 10px 0px rgba(205, 26, 64, 0.22)",
+                  width: "86px",
+                  height: "40px",
+                  color: "white",
+                  border: "none",
+                }}
+              >
+                검색
+              </button>
+            </form>
+          </div>
+          {/* Display search results */}
+          <div>
+            {placesArray.map((place) => (
+              <div
+                key={place.id}
+                style={{ padding: "10px", borderBottom: "1px solid #D9D9D9" }}
+              >
+                <h4>{place.place_name}</h4>
+                <p>{place.address_name}</p>
+                <p>{place.phone}</p>
+                <a
+                  href={place.place_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit Website
+                </a>
+              </div>
+            ))}
+          </div>
+        </ModalBody>
+        {/* ... (ModalFooter and other JSX components) */}
+      </Modal>
     </>
   );
 };

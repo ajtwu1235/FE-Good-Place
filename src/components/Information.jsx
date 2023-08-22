@@ -1,4 +1,5 @@
 import React from "react";
+import PlaceMap from "./Map";
 
 const Information = () => {
   return (
@@ -42,7 +43,7 @@ const Information = () => {
           <li>가게 정보: </li>
           <li>추천 아이디 : </li>
         </ul>
-        {/*<PlaceMap />*/}
+        <PlaceMap />
         <hr />
       </div>
     </>

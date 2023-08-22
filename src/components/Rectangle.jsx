@@ -2,6 +2,8 @@ import MainRecommended from "./main/MainRecommended";
 import Manipulator from "bootstrap/js/src/dom/manipulator";
 import MainPopular from "./main/MainPopular";
 import MainShared from "./main/MainShared";
+import MainReview from "./main/MainReview";
+import MainTeam from "./main/MainTeam";
 
 const Rectangle = () => {
   return <>
@@ -95,6 +97,8 @@ const Rectangle = () => {
       <MainRecommended />
       <MainPopular/>
       <MainShared/>
+      <MainReview/>
+      <MainTeam/>
   </>
 
 };

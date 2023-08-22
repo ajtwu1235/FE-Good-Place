@@ -1,6 +1,8 @@
+import './main.css'
+
 const MainPopular = () => {
     return <>
-        <div className="popular_restaurant">
+        <div className="main_container">
             <p className="main_title">popular restaurant</p>
             <div className="popularBox">
                 <div className="popular_box">

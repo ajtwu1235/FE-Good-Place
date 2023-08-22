@@ -1,6 +1,8 @@
+import './main.css'
+
 const MainShared = () => {
     return <>
-        <div className="shared_photos">
+        <div className="main_container">
             <p className="main_title">Shared photos</p>
             <div className="photoBox">
                 <img className="photo_img" src="/images/8.png" alt=""></img>

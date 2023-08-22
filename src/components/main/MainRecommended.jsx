@@ -1,3 +1,5 @@
+import './main.css'
+
 const MainRecommended = () => {
     return <>
         <div className="recommended_img">

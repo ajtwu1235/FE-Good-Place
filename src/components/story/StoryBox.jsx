@@ -1,3 +1,5 @@
+import './story.css'
+
 const StoryBox = () => {
 
 

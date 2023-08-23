@@ -1,0 +1,58 @@
+.StoryListBox {
+    
+    display : sflex;
+
+    flex-direction: column;
+    margin-top:70px;
+
+}
+
+.titleStyle {
+    font-size:20px;
+}
+
+.subTitleStyle {
+    font-size:28px;
+    font-style:normal;
+    color : #1E1E1E;
+}
+
+.flexRow  {
+    display:flex ;
+    
+    gap: 50px ;
+    margin: 35px 100px;
+    
+}
+
+.buttonStyle {
+    width:101px;
+    height : 43px;
+    border-radius: 20px;
+    border :1px, solid ,#000 ;
+    background : #FFF;
+    font-size: 24px;
+    margin-left: 23px;
+
+}
+
+
+.titleStyle {
+    color: #000;
+    font-family: Gowun Dodum;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.topTitleStyle{
+    font-size: 32px;
+    color: #000;
+    margin-left: 90px;
+    
+}
+
+.buttonList{
+    margin-left: 70px;
+}

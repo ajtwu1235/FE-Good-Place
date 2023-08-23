@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
+import { useState } from "react";
+import LoginModal from "./LoginModal";
+import { Button } from "react-bootstrap";
+
 const MyHeader = () => {
+  const [modalShow, setModalShow] = useState(false);
+
   const headerStyle = {
     fontSize: "20px",
     fontStyle: "normal",
@@ -63,10 +69,22 @@ const MyHeader = () => {
                 </Link>
               </li>
               <li className="nav-item userbtn" style={headerStyle}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className="nav-link user">
-                  <img
-                    src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7"
-                    alt={"img"}
+                  <Button
+                    variant="primary"
+                    onClick={() => setModalShow(true)}
+                    style={{ backgroundColor: "transparent", border: "none" }}
+                  >
+                    <img
+                      src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7"
+                      alt={"button"}
+                    />
+                  </Button>
+
+                  <LoginModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
                   />
                 </a>
               </li>

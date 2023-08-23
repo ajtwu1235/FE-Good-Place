@@ -1,4 +1,4 @@
-import "../../css/story.css";
+import "./story.css";
 
 const StoryBox = () => {
   return (

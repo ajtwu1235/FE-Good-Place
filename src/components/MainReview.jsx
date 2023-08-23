@@ -1,6 +1,6 @@
-import "../../css/mainReview.css";
+import "./mainReview.css";
 import { useState } from "react";
-import { TEXT_DATA } from "../../data/TEXT_DATA";
+import { TEXT_DATA } from "../data/TEXT_DATA";
 
 const MainReview = () => {
   const [mainReviewText, setMainBannerText] = useState(TEXT_DATA[0].text);

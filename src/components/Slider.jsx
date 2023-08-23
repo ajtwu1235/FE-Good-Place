@@ -1,8 +1,12 @@
+import "./detail.css";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "../../css/styles.css";
+import "./styles.css";
 import Information from "./Information";
+import DetailReview from "./DetailReview";
+import DetailComment from "./DetailComment";
+import DetailCommentInput from "./DetailCommentInput";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -69,6 +73,9 @@ const Slider = () => {
           })}
         </Carousel>
         <Information></Information>
+        <DetailReview></DetailReview>
+        <DetailComment></DetailComment>
+        <DetailCommentInput></DetailCommentInput>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import {
   PaginationLink,
 } from "reactstrap";
 
-import { myAxios } from "../../network/api";
+import { myAxios } from "../network/api";
 import axios from "axios";
 
 const RotatedDiv = ({ onClick }) => {

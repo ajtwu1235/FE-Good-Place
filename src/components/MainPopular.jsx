@@ -1,4 +1,4 @@
-import "../../css/main.css";
+import "./main.css";
 
 const MainPopular = () => {
   return (

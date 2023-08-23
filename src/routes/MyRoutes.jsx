@@ -2,16 +2,16 @@ import { Routes, Route } from "react-router-dom";
 
 import { useState } from "react";
 import Template from "../template/Template";
-import KakaoLoginRedirect from "../components/user/KakaoLoginRedirect";
-import MainStory from "../components/main/MainStory";
-import ListPage from "../components/list/List";
+import KakaoLoginRedirect from "../components/KakaoLoginRedirect";
+import MainStory from "../components/MainStory";
+import ListPage from "../components/List";
 
-import Recommend from "../components/recommned/Recommend";
-import Slider from "../components/detail/Slider";
+import Recommend from "../components/Recommend";
+import Slider from "../components/Slider";
 
-import Story from "../components/story/Story";
+import Story from "../components/Story";
 
-import MainRectangle from "../components/main/MainRectangle";
+import MainRectangle from "../components/MainRectangle";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array

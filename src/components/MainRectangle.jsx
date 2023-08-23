@@ -3,6 +3,7 @@ import MainPopular from "./MainPopular";
 import MainShared from "./MainShared";
 import MainReview from "./MainReview";
 import MainTeam from "./MainTeam";
+import "./main.css";
 
 const MainRectangle = () => {
   return (

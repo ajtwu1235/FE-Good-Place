@@ -1,3 +1,4 @@
+import "./detail.css";
 const DetailComment = () => {
   return (
     <>

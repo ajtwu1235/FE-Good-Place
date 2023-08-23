@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { useState } from "react";
-import LoginModal from "./user/LoginModal";
+import LoginModal from "./LoginModal";
 import { Button } from "react-bootstrap";
 
 const MyHeader = () => {

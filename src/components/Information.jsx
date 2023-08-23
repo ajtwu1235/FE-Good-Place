@@ -1,3 +1,4 @@
+import "./detail.css";
 import React from "react";
 import PlaceMap from "./Map";
 

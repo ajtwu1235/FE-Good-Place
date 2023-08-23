@@ -1,6 +1,6 @@
-import "../../css/mainTeam.css";
+import "./mainTeam.css";
 import { useState } from "react";
-import { TEAM_DATA } from "../../data/TEAM_DATA";
+import { TEAM_DATA } from "../data/TEAM_DATA";
 
 const MainTeam = () => {
   const [mainTeamText, setMainTeamText] = useState(TEAM_DATA[0].text);

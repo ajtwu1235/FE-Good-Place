@@ -249,4 +249,6 @@ button{
   height: 16px;
   margin-right: 5px;
 }
-
+.login_btn {
+  margin-top: 10px;
+}

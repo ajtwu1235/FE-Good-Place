@@ -72,6 +72,7 @@ const MyHeader = () => {
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className="nav-link user">
                   <Button
+                      className="login_btn"
                     variant="primary"
                     onClick={() => setModalShow(true)}
                     style={{ backgroundColor: "transparent", border: "none" }}

@@ -10,7 +10,7 @@ const Information = () => {
           marginTop: "80px",
         }}
       >
-        <ul style={{ listStyleType: "none" }}>
+        <ul style={{ listStyleType: "none", listStyle:"none" }}>
           <li
             style={{
               color: "#1E1E1E",

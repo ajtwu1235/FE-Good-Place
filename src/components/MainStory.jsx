@@ -1,4 +1,4 @@
-import "./story.css";
+import "./Story1.css";
 import MyHeader from "./MyHeader";
 import StoryBox from "./StoryBox";
 import StoryList from "./StoryList";

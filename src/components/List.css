@@ -16,11 +16,13 @@
 }
 
 .flexRow  {
-    display:flex ;
+    display: flex ;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     gap: 50px ;
     margin: 35px 100px;
     align-items: center;
-    flex-wrap: wrap;
+
 }
 
 .buttonStyle {
@@ -47,12 +49,12 @@
 .topTitleStyle{
     font-size: 32px;
     color: #000;
-    margin-left: 90px;
+    margin-left: 230px;
     
 }
 
 .buttonList{
-    margin-left: 70px;
+    margin-left: 210px;
 }
 
 .story_container{

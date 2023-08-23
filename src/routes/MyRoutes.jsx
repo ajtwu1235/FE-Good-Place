@@ -6,6 +6,7 @@ import MyHeader from "../components/MyHeader";
 import Template from "../template/Template";
 import KakaoLoginRedirect from "../components/KakaoLoginRedirect";
 import MainStory from "../components/MainStory/MainStory";
+import ListPage from "../components/ListPage/List";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
@@ -21,6 +22,7 @@ const MyRoutes = () => {
        
       </Route>
       <Route path="/redirect" element={<KakaoLoginRedirect/>}></Route>
+      <Route path="/list" element={<ListPage/>}></Route>
       <Route path="/mainStory" element={<MainStory/>}></Route>
     </Routes>
   );

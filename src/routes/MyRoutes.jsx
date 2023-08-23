@@ -26,10 +26,11 @@ const MyRoutes = () => {
         />
         <Route path="/page_detail" element={<Slider places={myPlaces} />} />
         <Route path="/story" element={<Story />}></Route>
+        <Route path="/list" element={<ListPage />}></Route>
+      <Route path="/mainStory" element={<MainStory />}></Route>
       </Route>
       <Route path="/redirect" element={<KakaoLoginRedirect />}></Route>
-      <Route path="/list" element={<ListPage />}></Route>
-      <Route path="/mainStory" element={<MainStory />}></Route>
+   
     </Routes>
   );
 };

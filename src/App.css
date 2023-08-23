@@ -147,7 +147,7 @@ button{
   position: absolute;
 }
 
-/*STORY*/
+/* STORY
 .storyBox{
   justify-content: space-around;
   flex-direction: row;
@@ -248,5 +248,5 @@ button{
   width: 16px;
   height: 16px;
   margin-right: 5px;
-}
+} */
 

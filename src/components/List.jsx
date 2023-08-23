@@ -1,62 +1,61 @@
-import MyHeader from "./MyHeader";
-import "./List.css";
-const ListPage = () => {
-  const data = fetch("http:8080/api/v1/client");
-  console.log(data);
 
-  return (
-    <>
-      <MyHeader></MyHeader>
+import { useEffect, useState } from 'react';
+import './List.css'
+import axios from "axios";
+const ListPage = ()=>{
 
-      <div></div>
+  
+  const [data,setData] = useState([]);
 
-      <div className="StoryListBox">
+  const getData =()=>axios.get('http://localhost:8080/api/v1/client?size=8')
+      .then(response =>{
+        console.log(response.data)
+        setData(response.data.content)
+      })
+
+  useEffect(() => {
+    getData()
+  }, [])
+
+  console.log(data)
+
+  
+
+
+     return <>
+        <div className="StoryListBox">
         <div className="story_container">
-          <div className="story_wrap">
-            <div className="topTitleStyle">
-              <p>믿고보는 맛집 리스트</p>
-            </div>
-            <div className="buttonList">
-              <button className="buttonStyle"># 제주</button>
-              <button className="buttonStyle"># 분식</button>
-              <button className="buttonStyle"># 집밥</button>
-            </div>
-          </div>
+        <div className="story_wrap">
+        <div className="topTitleStyle">
+          <p>믿고보는 맛집 리스트</p>
+        </div>
 
-          {/* 여기서부터 한줄 시작 */}
-          <div className="flexRow">
-            <div>
-              <p className="titleStyle">제주도 제주시</p>
-              <p className="subTitleStyle">신해바라기 분식</p>
-              <img src="images/sunflower.png"></img>
-            </div>
+        <div className="buttonList">
+          <button className="buttonStyle"># 제주</button>
+          <button className="buttonStyle"># 분식</button>
+          <button className="buttonStyle"># 집밥</button>
+        </div>
 
-            <div>
-              <p className="titleStyle">제주도 제주시</p>
-              <p className="subTitleStyle">신해바라기 분식</p>
-              <img src="images/sunflower.png"></img>
-            </div>
-          </div>
+        {/* 여기서부터 한줄 시작 */}
+        <div className="flexRow">
+        {data.map(el=>
+          <div>
+          <p className="titleStyle">{el.address}</p>
+          <p className="subTitleStyle">{el.name}</p>
+          <a href='/mainStory'>
+          <img href="" src="images/sunflower.png"></img>
+          </a>
+          
+        </div>
+          )}
         </div>
 
         {/* 여기서 한줄 끝 */}
 
-        <div className="flexRow">
-          <div>
-            <p className="titleStyle">제주도 제주시</p>
-            <p className="subTitleStyle">신해바라기 분식</p>
-            <img src="images/sunflower.png"></img>
-          </div>
-
-          <div>
-            <p className="titleStyle">제주도 제주시</p>
-            <p className="subTitleStyle">신해바라기 분식</p>
-            <img src="images/sunflower.png"></img>
           </div>
         </div>
       </div>
     </>
-  );
 };
 
 export default ListPage;

@@ -68,6 +68,7 @@ const Recommend = ({ setMyPlaces, places }) => {
   const [selectedPlaces, setSelectedPlaces] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [reviews, setReviews] = useState("");
   const isSelected = (place) => selectedPlaces.includes(place);
 
   const toggle = () => setModal(!modal);
@@ -101,22 +102,24 @@ const Recommend = ({ setMyPlaces, places }) => {
       const selectedPlacesData = JSON.stringify(selectedPlaces);
       const params = new URLSearchParams();
       params.append("selectedPlacesData", selectedPlacesData);
+      params.append("reviews", reviews); // Include 'reviews' as a query parameter
 
-      console.log(selectedPlacesData);
       const response = await axios.post(
         "http://localhost:8080" +
           `/api/v1/client/submit-selected-places?${params.toString()}`,
-        {},
+        {}, // Send an empty object in the request body
         { headers: { "Content-Type": "application/json" } },
       );
 
       if (response.status === 200) {
         setSuccessMessage("Selected places submitted successfully.");
-        toast.success("Selected places submitted successfully."); // Show success toast
+        toast.success("Selected places submitted successfully.");
+        console.log(reviews);
+        setReviews("");
       }
     } catch (error) {
       setErrorMessage("Failed to submit selected places.");
-      toast.error("Failed to submit selected places."); // Show error toast
+      toast.error("Failed to submit selected places.");
     }
   };
 
@@ -235,6 +238,25 @@ const Recommend = ({ setMyPlaces, places }) => {
                   </a>
                 </div>
               ))}
+
+              <div
+                className="reviews"
+                contentEditable="true"
+                // className="form-control me-2"
+                placeholder="reviews"
+                aria-label="reviews"
+                style={{
+                  marginTop: "10px",
+                  width: "466.758px",
+                  height: "172px",
+                  borderRadius: "10px",
+                  border: "1px solid #D9D9D9",
+                  background: "#FFF",
+                  wordWrap: "break-word",
+                }}
+                onBlur={(e) => setReviews(e.target.innerText)} // Corrected placement of onBlur event
+              ></div>
+
               {/* Add a button to send selected places to the server */}
               <div
                 style={{

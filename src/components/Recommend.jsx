@@ -10,7 +10,8 @@ import {
 
 import { myAxios } from "../network/api";
 import axios from "axios";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const RotatedDiv = ({ onClick }) => {
   return (
     <div
@@ -111,11 +112,11 @@ const Recommend = ({ setMyPlaces, places }) => {
 
       if (response.status === 200) {
         setSuccessMessage("Selected places submitted successfully.");
-        console.log(successMessage);
+        toast.success("Selected places submitted successfully."); // Show success toast
       }
     } catch (error) {
       setErrorMessage("Failed to submit selected places.");
-      console.log(errorMessage);
+      toast.error("Failed to submit selected places."); // Show error toast
     }
   };
 
@@ -170,6 +171,7 @@ const Recommend = ({ setMyPlaces, places }) => {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>식당 등록</ModalHeader>
         <ModalBody>
+          <ToastContainer />
           <div style={{}}>
             <form className="d-flex" onSubmit={onSubmitHandler}>
               <input

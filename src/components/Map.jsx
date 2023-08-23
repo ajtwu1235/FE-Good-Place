@@ -48,6 +48,14 @@ const PlaceMap = () => {
       yAnchor: 1,
     });
     customOverlay.setMap(map);
+
+    function setZoomable(zoomable) {
+      // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+      map.setZoomable(zoomable);
+    }
+
+    // Set zoomable to true (you can set it to false if needed)
+    setZoomable(false);
   }, []);
 
   return <div id="map" style={{ width: "100%", height: "537px" }}></div>;

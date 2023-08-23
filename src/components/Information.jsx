@@ -74,7 +74,6 @@ const Information = () => {
           coordinateX={storeData.coordinateX}
           coordinateY={storeData.coordinateY}
         />
-        <hr />
       </div>
     </>
   );

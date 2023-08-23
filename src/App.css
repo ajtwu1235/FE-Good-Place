@@ -142,10 +142,10 @@ button{
   font-size: 14px;
 }
 
-.search_img {
-  position : absolute;
+.search_btn{
+  margin-top: 3px;
+  position: absolute;
 }
-
 
 /*STORY*/
 .storyBox{
@@ -249,3 +249,4 @@ button{
   height: 16px;
   margin-right: 5px;
 }
+

@@ -31,11 +31,11 @@ const MyHeader = () => {
           </Link>
           <div className="search" style={{ marginLeft: "105px" }}>
             <input className="input_search" placeholder="검색어 입력" />
-            <img
+            <button className="search_btn"><img
               className="search_img"
               src="/images/group-72.svg"
               alt={"search"}
-            />
+            /></button>
           </div>
           <button
             className="navbar-toggler"

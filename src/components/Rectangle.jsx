@@ -1,5 +1,4 @@
 import MainRecommended from "./main/MainRecommended";
-import Manipulator from "bootstrap/js/src/dom/manipulator";
 import MainPopular from "./main/MainPopular";
 import MainShared from "./main/MainShared";
 import MainReview from "./main/MainReview";
@@ -7,93 +6,23 @@ import MainTeam from "./main/MainTeam";
 
 const Rectangle = () => {
   return <>
-    <div
-      style={{
-        width: "100%",
-        height: "768px",
-        margin: "auto",
-        backgroundImage:
-          "url(https://github.com/icebear2n2/FE-Good-Place/assets/87232411/c3a4ce55-c2f1-4c62-83a3-45036899be60)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
-      <ul>
-        <li
-          style={{
-            color: "#FFF",
-            fontSize: "86px",
-            fontStyle: "normal",
-            fontWeight: 700,
-            paddingTop: "218px",
-            lineHeight: "normal" /* 75% */,
-            marginBottom: "36px",
-            paddingLeft: "92px",
-          }}
-        >
-          Let’s Eat Now
-        </li>
-        <li
-          style={{
-            display: "flex",
-            width: "573px",
-            height: "41px",
-            flexDirection: "column",
-            justifyContent: "center",
-            color: "#FFF",
-            textAlign: "center",
-            fontSize: "32px",
-            fontStyle: "normal",
-            fontWeight: 400,
-            lineHeight: "normal" /* 75% */,
-            margin: "58px 0",
-          }}
-        >
-          내가 추천한 맛집, 솔직한 리뷰
-        </li>
-        <form className="d-flex">
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            style={{
-              width: "580px",
-              height: "65px",
-              borderRadius: "28px",
-              background: "rgba(255, 255, 255, 0.85)",
-              backdropFilter: "blur(5px)",
-              marginLeft: "92px",
-            }}
-          />
-          <button
-            className="btn btn-outline-success"
-            type="submit"
-            style={{
-              borderRadius: "18px",
-              background: "linear-gradient(90deg, #CD1A40 0%, #FF803C 100%)",
-              boxShadow: "0px 5px 10px 0px rgba(205, 26, 64, 0.22)",
-              width: "65px",
-              height: "65px",
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M17 17L21 21M3 11C3 13.1217 3.84285 15.1566 5.34315 16.6569C6.84344 18.1571 8.87827 19 11 19C13.1217 19 15.1566 18.1571 16.6569 16.6569C18.1571 15.1566 19 13.1217 19 11C19 8.87827 18.1571 6.84344 16.6569 5.34315C15.1566 3.84285 13.1217 3 11 3C8.87827 3 6.84344 3.84285 5.34315 5.34315C3.84285 6.84344 3 8.87827 3 11Z"
-                stroke="white"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-        </form>
-      </ul>
-    </div>
+      <div className="main_wrap">
+          <div className="main_photo_wrap">
+              <img src="/images/main_food.png" alt="" className="main_food"></img>
+                  <div className="main_food_cover"></div>
+          </div>
+          <div className="main_inner_wrap">
+              <div className="main_inner_text">
+                  <p className="main_text main_text_sm ">내가 추천한 맛집</p>
+                  <p className="main_text">Let's Eat Now</p>
+              </div>
+              <div className="main_search">
+                  <input className="main_input_search"></input>
+                  <button className="main_search_btn"><img className="main_search_img" src="/images/group-72.svg"></img></button>
+              </div>
+          </div>
+      </div>
+
       <MainRecommended />
       <MainPopular/>
       <MainShared/>

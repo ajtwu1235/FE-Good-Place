@@ -1,27 +1,28 @@
-import './main.css'
+import './mainTeam.css'
+import {useState} from "react";
+import {TEAM_DATA} from "./TEAM_DATA";
 
 const MainTeam = () => {
+    const [mainTeamText, setMainTeamText] =useState(TEAM_DATA[0].text)
+
+    const changeText = (data) => {
+        setMainTeamText(data.text)
+    }
     return <>
         <div className="main_container">
             <p className="main_title">WHO'S ON OUR TEAM ?</p>
             <div className="team_wrap">
                 <div className="teamBox">
-                    <p className="team_text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic fugiat vero
-                        ex mollitia laborum ipsum nesciunt atque ratione ab odio, vel nisi deserunt dolor nostrum
-                        praesentium voluptatibus quod adipisci qui!</p>
+                    <p className="team_text">{mainTeamText}</p>
                     <div className="team_box">
-                        <div className="team_person">
-                            <img src="/images/team1.svg" alt=""></img>
-                                <p className="team_name">김지혜</p>
-                        </div>
-                        <div className="team_person">
-                            <img src="/images/team1.svg" alt=""></img>
-                                <p className="team_name">김지혜</p>
-                        </div>
-                        <div className="team_person">
-                            <img src="/images/team1.svg" alt=""></img>
-                                <p className="team_name">김지혜</p>
-                        </div>
+                        {TEAM_DATA.map(data =>{
+                            return (
+                            <button className="team_person"  onClick={() => {changeText(data)}} name={data.name} key={data.id}>
+                                <img src="/images/team1.svg" alt=""></img>
+                                <p className="team_name">{data.name}</p>
+                            </button>
+                            )
+                        })}
                     </div>
                 </div>
                 <img className="team_big_img" src="/images/team1.svg" alt=""></img>

@@ -1,0 +1,41 @@
+/* WHO'S ON OUR TEAM ? */
+.team_wrap{
+    display: flex;
+    margin: 0 300px;
+}
+
+.teamBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.team_text{
+    color: #000;
+    font-family: Work Sans;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.team_box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 46px;
+    margin-top: 38px;
+}
+.team_person{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.team_name{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.team_big_img{
+    width: 351px;
+    height: 350px;
+    margin-left: 132px;
+}

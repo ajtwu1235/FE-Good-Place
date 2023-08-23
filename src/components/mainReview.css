@@ -27,3 +27,14 @@
 button:active {
     color: crimson;
 }
+
+.top_review_text{
+    position: absolute;
+    text-align: center;
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 26px;
+    padding-top: 50px;
+    margin: 0;
+}

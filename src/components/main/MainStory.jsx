@@ -1,6 +1,6 @@
-import MyHeader from "./MyHeader";
-import StoryBox from "./StoryBox";
-import StoryList from "./StoryList";
+import MyHeader from "../MyHeader";
+import StoryBox from "../story/StoryBox";
+import StoryList from "../story/StoryList";
 
 const MainStory = () => {
   const StoryContainer = {

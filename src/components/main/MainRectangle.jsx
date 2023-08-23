@@ -4,7 +4,7 @@ import MainShared from "./MainShared";
 import MainReview from "./MainReview";
 import MainTeam from "./MainTeam";
 
-const Rectangle = () => {
+const MainRectangle = () => {
   return (
     <>
       <div className="main_wrap">
@@ -38,4 +38,4 @@ const Rectangle = () => {
     </>
   );
 };
-export default Rectangle;
+export default MainRectangle;

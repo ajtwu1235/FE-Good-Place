@@ -2,16 +2,16 @@ import { Routes, Route } from "react-router-dom";
 
 import { useState } from "react";
 import Template from "../template/Template";
-import KakaoLoginRedirect from "../components/KakaoLoginRedirect";
-import MainStory from "../components/MainStory";
-import ListPage from "../components/List";
+import KakaoLoginRedirect from "../components/user/KakaoLoginRedirect";
+import MainStory from "../components/main/MainStory";
+import ListPage from "../components/list/List";
 
-import Recommend from "../components/Recommend";
-import Slider from "../components/Slider";
+import Recommend from "../components/recommned/Recommend";
+import Slider from "../components/detail/Slider";
 
-import Story from "../components/Story";
+import Story from "../components/story/Story";
 
-import Rectangle from "../components/Rectangle";
+import MainRectangle from "../components/main/MainRectangle";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
@@ -19,7 +19,7 @@ const MyRoutes = () => {
   return (
     <Routes>
       <Route element={<Template />}>
-        <Route path="/" element={<Rectangle />} />
+        <Route path="/" element={<MainRectangle />} />
         <Route
           path="/recommend"
           element={<Recommend places={myPlaces} setMyPlaces={setMyPlaces} />}

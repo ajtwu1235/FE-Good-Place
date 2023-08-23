@@ -1,8 +1,36 @@
 import "./detail.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import PlaceMap from "./Map";
 
 const Information = () => {
+  const [storeData, setStoreData] = useState({
+    id: 0,
+    placeId: "",
+    name: "",
+    address: "",
+    phone: "",
+    foodType: "",
+    storeImgUrl: "",
+    coordinateX: "",
+    coordinateY: "",
+    users: [],
+  });
+
+  useEffect(() => {
+    const placeId = "21455793"; // 예시 데이터의 placeId
+
+    axios
+      .get(`http://localhost:8080/api/v1/client/place/${placeId}`)
+      .then((response) => {
+        const data = response.data;
+        setStoreData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       <div
@@ -20,14 +48,13 @@ const Information = () => {
               lineHeight: "normal",
             }}
           >
-            식당 이름
+            {storeData.name}
           </li>
           <hr />
         </ul>
         <ul
           style={{
             marginTop: "31px",
-
             width: "1124px",
             height: "435px",
             listStyleType: "none",
@@ -38,13 +65,15 @@ const Information = () => {
             lineHeight: "57px",
           }}
         >
-          <li>주소 : </li>
-          <li>음식 종류 : </li>
-          <li>전화번호 : </li>
-          <li>가게 정보: </li>
-          <li>추천 아이디 : </li>
+          <li>주소: {storeData.address}</li>
+          <li>음식 종류: {storeData.foodType}</li>
+          <li>전화번호: {storeData.phone}</li>
+          <li>추천 아이디: {storeData.users.join(", ")}</li>
         </ul>
-        <PlaceMap />
+        <PlaceMap
+          coordinateX={storeData.coordinateX}
+          coordinateY={storeData.coordinateY}
+        />
         <hr />
       </div>
     </>

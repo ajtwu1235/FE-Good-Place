@@ -1,7 +1,6 @@
-import "./Story1.css";
-import MyHeader from "./MyHeader";
-import StoryBox from "./StoryBox";
+
 import StoryList from "./StoryList";
+import StoryBox2 from "./StoryBox2";
 
 const MainStory = () => {
   const StoryContainer = {
@@ -11,9 +10,10 @@ const MainStory = () => {
 
   return (
     <>
-      <MyHeader></MyHeader>
       <div style={StoryContainer}>
-        <StoryBox></StoryBox>
+     
+        <StoryBox2></StoryBox2>
+        
 
         <StoryList></StoryList>
       </div>

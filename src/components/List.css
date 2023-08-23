@@ -44,17 +44,18 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
 }
 
 .topTitleStyle{
     font-size: 32px;
     color: #000;
-    margin-left: 300px;
+    margin-left: 130px;
     
 }
 
 .buttonList{
-    margin-left: 280px;
+    margin-left: 110px;
 }
 
 .story_container{

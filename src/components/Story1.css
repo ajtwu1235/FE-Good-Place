@@ -11,10 +11,7 @@
     margin: 70px 50px;
 
   }
-  .storybox_wrap{
-
-    position: fixed;
-    
+.storybox_wrap{
     display: flex;
     flex-direction: column;
     align-items: flex-start;

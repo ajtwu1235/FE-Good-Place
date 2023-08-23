@@ -1,0 +1,101 @@
+/*STORY*/
+.storyBox{
+    justify-content: space-around;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 70px 50px;
+}
+
+.storybox_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 588px;
+    position: relative;
+    margin-top: 70px;
+}
+
+.story_top_container{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.story_photo{
+    width: 100vw;
+    position: relative;
+    height: 574px;
+}
+
+
+.story_curtain{
+    width: 100vw;
+    position: absolute;
+    height: 576px;
+    top : 69px
+}
+
+.story_photo_text{
+    position: absolute;
+    color: #FFF;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    Width :382px;
+    Height :93px;
+    Top :295px;
+    Left :94px;
+}
+
+.storybox_text{
+    position: relative;
+    top: 40px;
+}
+.storybox_wrap1{
+    display: flex;
+    width: 588px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 35px;
+}
+.story_text{
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+}
+.story_text1{
+    font-size: 24px;
+    font-weight: 200;
+}
+.story_text2{
+    position: absolute;
+    left: 70px;
+    font-size: 22px;
+}
+.story_title{
+    font-size: 35px;
+    margin: 5px 0 0 0;
+}
+
+.story_title2{
+    font-size: 28px;
+    margin: 5px 0 0 0;
+}
+.storybox_wrap2{
+    display: flex;
+    align-items: center;
+    margin: 15px 0 0 0;
+}
+.story_text_bar{
+    margin: 0 11px;
+}
+.story_like_small{
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}

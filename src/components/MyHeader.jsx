@@ -8,13 +8,14 @@ const MyHeader = () => {
     lineHeight: "normal",
     margin: "auto",
   };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div
           className="container-fluid"
           style={{
-            width: "1225px",
+            width: "100%",
             height: "54.742px",
             flex: "auto",
           }}
@@ -22,6 +23,14 @@ const MyHeader = () => {
           <Link className="navbar-brand" style={headerStyle} to="/">
             Good Place
           </Link>
+          <div className="search">
+            <input className="input_search" placeholder="검색어 입력" />
+            <img
+              className="search_img"
+              src="/images/group-72.svg"
+              alt={"search"}
+            />
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -44,23 +53,16 @@ const MyHeader = () => {
                 </Link>
               </li>
               <li className="nav-item" style={headerStyle}>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <Link className="nav-link about us" to="#">
-                  About Us
-                </Link>
-              </li>
-              <li className="nav-item" style={headerStyle}>
-                <Link className="nav-link story" to="#">
+                <Link className="nav-link story" to="/story">
                   Story
                 </Link>
               </li>
               <li className="nav-item" style={headerStyle}>
-                <Link className="nav-link list" to="#">
+                <Link className="nav-link list" to="/list">
                   List
                 </Link>
               </li>
-              <li className="nav-item" style={headerStyle}>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <li className="nav-item userbtn" style={headerStyle}>
                 <a className="nav-link user">
                   <img
                     src="https://github.com/icebear2n2/FE-Good-Place/assets/87232411/528901ef-863d-48b8-a414-b6f714b8bbe7"

@@ -1,8 +1,22 @@
 import MyHeader from "./MyHeader";
 import "./List.css";
+import {useEffect, useState} from "react";
+import axios from "axios";
 const ListPage = () => {
-  const data = fetch("http:8080/api/v1/client");
-  console.log(data);
+
+  const [data,setData] = useState([]);
+
+  const getData =()=>axios.get('http://localhost:8080/api/v1/client?size=8')
+      .then(response =>{
+        console.log(response.data)
+        setData(response.data.content)
+      })
+
+  useEffect(() => {
+    getData()
+  }, [])
+
+  console.log(data)
 
   return (
     <>
@@ -25,35 +39,19 @@ const ListPage = () => {
 
           {/* 여기서부터 한줄 시작 */}
           <div className="flexRow">
-            <div>
-              <p className="titleStyle">제주도 제주시</p>
-              <p className="subTitleStyle">신해바라기 분식</p>
-              <img src="images/sunflower.png"></img>
-            </div>
-
-            <div>
-              <p className="titleStyle">제주도 제주시</p>
-              <p className="subTitleStyle">신해바라기 분식</p>
-              <img src="images/sunflower.png"></img>
-            </div>
+            
+        {data.map(el=>
+          <div>
+          <p className="titleStyle">{el.address}</p>
+          <p className="subTitleStyle">{el.name}</p>
+          <img src="images/sunflower.png"></img>
+        </div>
+          )}
           </div>
         </div>
 
         {/* 여기서 한줄 끝 */}
 
-        <div className="flexRow">
-          <div>
-            <p className="titleStyle">제주도 제주시</p>
-            <p className="subTitleStyle">신해바라기 분식</p>
-            <img src="images/sunflower.png"></img>
-          </div>
-
-          <div>
-            <p className="titleStyle">제주도 제주시</p>
-            <p className="subTitleStyle">신해바라기 분식</p>
-            <img src="images/sunflower.png"></img>
-          </div>
-        </div>
       </div>
     </>
   );

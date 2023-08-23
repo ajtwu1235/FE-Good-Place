@@ -1,5 +1,5 @@
 * {
-  font-family: "Gowun Dodum" !important;
+  font-family: "Gowun Dodum";
   margin: 0;
   }
 button{
@@ -251,4 +251,65 @@ button{
 }
 .login_btn {
   margin-top: 10px;
+}
+
+
+/* title */
+.detail_text_container{
+  display: flex;
+  flex-direction: column;
+}
+
+.detail_title_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.detail_title{
+  color: #1E1E1E;
+  font-family: Gowun Dodum;
+  font-size: 34px;
+  font-weight: 400;
+  margin: 0;
+}
+.detail_text{
+  color: #000;
+  font-family: Work Sans;
+  font-size: 19px;
+  font-weight: 200;
+  line-height: 57px;
+  margin: 0;
+}
+.detail_title_box > img {
+  width: 27px;
+  height: 27px;
+  margin: 0 5px;
+}
+
+.detail_like{
+  margin-left: 19px;
+}
+.detail_sm {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.detail_sm > img{
+  width: 16px;
+  height: 20px;
+  fill: #8C8C8C;
+  margin: 5px 11px 0 0 ;
+}
+
+.detail_sm > p {
+  color: #8C8C8C;
+  font-family: Gowun Dodum;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.detail_like_sm {
+  margin-left: 27px;
 }

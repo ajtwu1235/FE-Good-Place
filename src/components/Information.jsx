@@ -1,8 +1,10 @@
 import "./detail.css";
-import React from "react";
+import React, {useState} from "react";
 import PlaceMap from "./Map";
+import YourReviewModal from "./YourReviewModal";
 
 const Information = () => {
+    const [modalShow, setModalShow] = useState(false);
   return (
     <>
       <div
@@ -11,17 +13,33 @@ const Information = () => {
         }}
       >
         <ul style={{ listStyleType: "none", listStyle:"none" }}>
-          <li
-            style={{
-              color: "#1E1E1E",
-              fontSize: "34px",
-              fontStyle: "normal",
-              fontWeight: 400,
-              lineHeight: "normal",
-            }}
-          >
-            식당 이름
-          </li>
+            <div className="detail_text_container">
+                <div className="detail_title_box">
+                    <p className="detail_title">식당이름</p>
+                    <div className=" detail_title_box detail_wrap">
+                        <button className=" detail_title_box detail_review" onClick={() => setModalShow(true)}>
+                            <img src="/images/review1.svg" alt=""/>
+                            <p className="detail_text">Review</p>
+                        </button>
+                        <button className=" detail_title_box detail_like">
+                            <img src="/images/heart-1.svg" alt=""/>
+                            <p className="detail_text">Like</p>
+                        </button>
+                    </div>
+                </div>
+                <div className="detail_sm">
+                    <div className="detail_sm detail_sm_wrap">
+                        <div className=" detail_sm detail_review_sm">
+                            <img src="/images/review1.svg" alt=""/>
+                            <p>1234</p>
+                        </div>
+                        <div className="detail_sm detail_like_sm">
+                            <img src="/images/heart-1.svg" alt=""/>
+                            <p>1234</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <hr />
         </ul>
         <ul
@@ -47,6 +65,10 @@ const Information = () => {
         <PlaceMap />
         <hr />
       </div>
+        <YourReviewModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+        />
     </>
   );
 };

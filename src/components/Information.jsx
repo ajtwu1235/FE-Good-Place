@@ -2,6 +2,7 @@ import "./detail.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PlaceMap from "./Map";
+import { data } from "../data/place";
 
 const Information = () => {
   const [storeData, setStoreData] = useState({
@@ -25,6 +26,7 @@ const Information = () => {
       .then((response) => {
         const data = response.data;
         setStoreData(data);
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -68,7 +70,10 @@ const Information = () => {
           <li>주소: {storeData.address}</li>
           <li>음식 종류: {storeData.foodType}</li>
           <li>전화번호: {storeData.phone}</li>
-          <li>추천 아이디: {storeData.users.join(", ")}</li>
+          <li>
+            추천 사용자:{" "}
+            {storeData.users.map((user) => user.username).join(", ")}
+          </li>
         </ul>
         <PlaceMap
           coordinateX={storeData.coordinateX}

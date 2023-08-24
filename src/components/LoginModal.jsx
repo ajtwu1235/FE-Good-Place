@@ -15,9 +15,10 @@ const LoginModal = (props) => {
   };
 
   const ModalContent = {
-    fontSize: "14px",
+    fontSize: "16px",
     textAlign: "center",
     marginTop: "45px",
+    marginBottom:"45px"
   };
 
   return (
@@ -51,7 +52,7 @@ const LoginModal = (props) => {
             <br />
             로그인해서 맛집을 알려주세요
             <br />
-            찡긋 찡긋
+
           </p>
           <div>
             {/* <img src='C:\Users\playdata\gitRepo\FE-Good-Place\public\images\kakao-1.jpg'/> */}

@@ -1,4 +1,5 @@
 import "./main.css";
+import {Link} from "react-router-dom";
 
 const MainRecommended = () => {
   return (
@@ -23,7 +24,7 @@ const MainRecommended = () => {
               <div className="cover"></div>
             </div>
             <div className="food_inner">
-              <p className="food_text">수정 맛집</p>
+              <p className="food_text">지혜 맛집</p>
               <button className="food_btn">10 food</button>
             </div>
           </div>
@@ -34,7 +35,7 @@ const MainRecommended = () => {
               <div className="cover"></div>
             </div>
             <div className="food_inner">
-              <p className="food_text">수정 맛집</p>
+              <p className="food_text">태홍 맛집</p>
               <button className="food_btn">10 food</button>
             </div>
           </div>
@@ -45,12 +46,12 @@ const MainRecommended = () => {
               <div className="cover"></div>
             </div>
             <div className="food_inner">
-              <p className="food_text">수정 맛집</p>
+              <p className="food_text">독산 맛집</p>
               <button className="food_btn">10 food</button>
             </div>
           </div>
         </div>
-        <button className="food_btn btn_more">view more</button>
+        <Link to='/story' style={{textDecoration:'none'}}><button className="food_btn btn_more">view more</button> </Link>
       </div>
     </>
   );

@@ -5,7 +5,6 @@
 button{
   all: unset;
 }
-
 /* main title */
 .main_wrap{
   display: flex;
@@ -252,7 +251,16 @@ button{
 .login_btn {
   margin-top: 10px;
 }
-
+.login_btn_inner{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}
+.login_btn_text{
+  font-size: 18px;
+}
 
 /* title */
 .detail_text_container{

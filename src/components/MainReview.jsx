@@ -15,7 +15,7 @@ const MainReview = () => {
         <p className="main_title">top reviews for foods</p>
         <div className="reviewBox">
           <img src="/images/review.png" alt=""></img>
-          <p className="review_text">{mainReviewText}</p>
+          <p className="top_review_text">{mainReviewText}</p>
         </div>
         <div className="review_imgBox">
           {TEXT_DATA.map((data) => {

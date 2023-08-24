@@ -1,5 +1,23 @@
 import "./detail.css";
+import axios from "axios";
+import {useEffect, useState} from "react";
 const DetailReview = () => {
+  const [data,setData] = useState([]);
+
+  const getData =()=>axios.get(`http://localhost:8080/api/v1/reviews/`)
+      .then(response =>{
+        console.log(response.data)
+        setData(response.data.content)
+      })
+        const token = localStorage.getItem('token')
+
+
+    useEffect(() => {
+      getData()
+    }, [])
+
+    console.log(data)
+
   return (
     <>
       <div className="detail_container">

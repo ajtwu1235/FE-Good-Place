@@ -1,5 +1,8 @@
 import "./detail.css";
+import {useState} from "react";
 const DetailComment = () => {
+
+
   return (
     <>
       <div className="detail_container">

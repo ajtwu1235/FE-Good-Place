@@ -34,11 +34,15 @@ const ListPage = () => {
             {/* 여기서부터 한줄 시작 */}
             <div className="flexRow">
               {data.map((el) => (
-                <div>
+                <div key={el.id}>
+                  {" "}
+                  {/* Make sure to include a unique key */}
                   <p className="titleStyle">{el.address}</p>
                   <p className="subTitleStyle">{el.name}</p>
-                  <a href="/page_detail">
-                    <img href="" src="images/sunflower.png"></img>
+                  <a href={`/page_detail/${el.placeId}`}>
+                    {" "}
+                    {/* Include the placeId in the link */}
+                    <img src="images/sunflower.png" alt="sunflower" />
                   </a>
                 </div>
               ))}

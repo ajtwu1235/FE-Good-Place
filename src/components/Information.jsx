@@ -4,7 +4,7 @@ import axios from "axios";
 import PlaceMap from "./Map";
 import { data } from "../data/place";
 
-const Information = () => {
+const Information = ({ placeId }) => {
   const [storeData, setStoreData] = useState({
     id: 0,
     placeId: "",
@@ -19,8 +19,6 @@ const Information = () => {
   });
 
   useEffect(() => {
-    const placeId = "21455793"; // 예시 데이터의 placeId
-
     axios
       .get(`http://localhost:8080/api/v1/client/place/${placeId}`)
       .then((response) => {
@@ -31,7 +29,7 @@ const Information = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [placeId]);
 
   return (
     <>

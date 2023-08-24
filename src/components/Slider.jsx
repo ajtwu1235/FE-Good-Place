@@ -7,6 +7,7 @@ import Information from "./Information";
 import DetailReview from "./DetailReview";
 import DetailComment from "./DetailComment";
 import DetailCommentInput from "./DetailCommentInput";
+import { useParams } from "react-router";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -48,6 +49,7 @@ const sliderImageUrl = [
   },
 ];
 const Slider = () => {
+  const { placeId } = useParams();
   return (
     <>
       <div
@@ -72,7 +74,7 @@ const Slider = () => {
             );
           })}
         </Carousel>
-        <Information></Information>
+        <Information placeId={placeId} />
         <DetailReview></DetailReview>
         <DetailComment></DetailComment>
         <DetailCommentInput></DetailCommentInput>

@@ -102,19 +102,24 @@ const Recommend = ({ setMyPlaces, places }) => {
       const selectedPlacesData = JSON.stringify(selectedPlaces);
       const params = new URLSearchParams();
       params.append("selectedPlacesData", selectedPlacesData);
-      params.append("reviews", reviews); // Include 'reviews' as a query parameter
+      params.append("reviews", reviews);
 
+      const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:8080" +
-          `/api/v1/client/submit-selected-places?${params.toString()}`,
-        {}, // Send an empty object in the request body
-        { headers: { "Content-Type": "application/json" } },
+        "http://localhost:8080/api/v1/recommend/submit-selected-places",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+          },
+          params: params,
+        },
       );
 
       if (response.status === 200) {
         setSuccessMessage("Selected places submitted successfully.");
         toast.success("Selected places submitted successfully.");
-        console.log(reviews);
         setReviews("");
       }
     } catch (error) {

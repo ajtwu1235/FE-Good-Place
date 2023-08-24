@@ -54,7 +54,7 @@ const Slider = () => {
     <>
       <div
         className="parent"
-        style={{ width: "1366px", height: "5168px", margin: "auto" }}
+        style={{ width: "90%", margin: "auto"}}
       >
         <Carousel
           responsive={responsive}
@@ -75,9 +75,9 @@ const Slider = () => {
           })}
         </Carousel>
         <Information placeId={placeId} />
-        <DetailReview></DetailReview>
-        <DetailComment></DetailComment>
-        <DetailCommentInput></DetailCommentInput>
+        <DetailReview ></DetailReview>
+        {/*<DetailComment></DetailComment>*/}
+        {/*<DetailCommentInput></DetailCommentInput>*/}
       </div>
     </>
   );

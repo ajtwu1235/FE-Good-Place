@@ -92,7 +92,7 @@ const Information = ({ placeId }) => {
           coordinateY={storeData.coordinateY}
         />
       </div>
-      <YourReviewModal show={modalShow} onHide={() => setModalShow(false)} />
+      <YourReviewModal show={modalShow} onHide={() => setModalShow(false)} storeId={storeData.id} placeId={placeId} />
     </>
   );
 };

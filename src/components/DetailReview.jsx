@@ -1,47 +1,38 @@
 import "./detail.css";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {useParams} from "react-router";
 const DetailReview = () => {
   const [data,setData] = useState([]);
+  const { placeId } = useParams();
 
-  const getData =()=>axios.get(`http://localhost:8080/api/v1/reviews/`)
+  const getData =()=>axios.get(`http://localhost:8080/api/v1/reviews/`+ placeId)
       .then(response =>{
-        console.log(response.data)
-        setData(response.data.content)
+        setData(response.data)
+        console.log(response.data.user)
       })
-        const token = localStorage.getItem('token')
-
 
     useEffect(() => {
       getData()
     }, [])
 
-    console.log(data)
-
   return (
     <>
-      <div className="detail_container">
-        <hr className="detail_line"></hr>
-        <p className="review_title">Review</p>
-        <div className="review_wrap">
-          <div className="review_profile">
-            <img src="/images/profile-1.png" alt=""></img>
-            <p className="review_text">김지혜</p>
-          </div>
-          <div className="review_text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-            maxime, non ullam modi repudiandae est quod asperiores ad rerum
-            aliquam consectetur, dolore praesentium quisquam. Eum fugit porro
-            eos tempore eaque?Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quas maxime, non ullam modi repudiandae est quod asperiores ad
-            rerum aliquam consectetur, dolore praesentium quisquam. Eum fugit
-            porro eos tempore eaque?Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quas maxime, non ullam modi repudiandae est quod
-            asperiores ad rerum aliquam consectetur, dolore praesentium
-            quisquam. Eum fugit porro eos tempore eaque?
-          </div>
+        <div className="detail_container">
+            <hr className="detail_line"></hr>
+            {data.map((el, index) => (
+                <>
+                    <div className="review_wrap" key={index}>
+                        <div className="review_profile">
+                            <img src="/images/profile-1.png" alt="" />
+                            <p className="review_text">{el.user.username}</p>
+                        </div>
+                        <div className="review_text">{el.content}</div>
+                    </div>
+                    <hr className="detail_line"></hr>
+                </>
+            ))}
         </div>
-      </div>
     </>
   );
 };

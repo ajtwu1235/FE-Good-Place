@@ -12,6 +12,7 @@ import Slider from "../components/Slider";
 import Story from "../components/Story";
 
 import MainRectangle from "../components/MainRectangle";
+import DetailReview from "../components/DetailReview";
 
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
@@ -26,7 +27,8 @@ const MyRoutes = () => {
         />
         <Route
           path="/page_detail/:placeId"
-          element={<Slider places={myPlaces} />}
+          element={<Slider places={myPlaces}
+          component={DetailReview}/>}
         />
         <Route path="/story" element={<Story />}></Route>
         <Route path="/list" element={<ListPage />}></Route>

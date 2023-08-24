@@ -1,10 +1,9 @@
-import "./Story1.css";
+import './story.css'
 
 const StoryBox2 = () => {
   return (
-    
       <div className="storyBox">
-        <div className="storybox_wrap">
+        <div className="storybox_wrap_fixed">
           <img
             src="/images/friedpork.png"
             alt="pork"

@@ -215,7 +215,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                     "linear-gradient(90deg, #CD1A40 0%, #FF803C 100%)",
                   boxShadow: "0px 5px 10px 0px rgba(205, 26, 64, 0.22)",
                   width: "86px",
-                  height: "40px",
+                  height: "27px",
                   color: "white",
                   border: "none",
                 }}
@@ -235,7 +235,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                     padding: "10px",
                     borderBottom: "1px solid #D9D9D9",
                     cursor: "pointer",
-                    backgroundColor: isSelected(place) ? "#F0F0F0" : "white", // Change background color if selected
+                    backgroundColor: isSelected(place) ? "gray" : "white", // Change background color if selected
                   }}
                   onClick={() => {
                     setSelectedPlaces([place]); // Set the selected place as the only item in the array
@@ -272,6 +272,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                 onBlur={(e) => setReviews(e.target.innerText)} // Corrected placement of onBlur event
               ></div>
               <input
+                  className="file_button"
                 type="file"
                 name="file"
                 accept="image/*"
@@ -290,6 +291,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                   style={{
                     width: "200px",
                     height: "30px",
+                      padding: "8px 0",
                     background:
                       "linear-gradient(90deg, #CD1A40 0%, #FF803C 100%)",
                     borderRadius: "8px",

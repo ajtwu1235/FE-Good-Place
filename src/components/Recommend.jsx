@@ -69,6 +69,7 @@ const Recommend = ({ setMyPlaces, places }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [reviews, setReviews] = useState("");
+  const [file, setFile] = useState(null);
   const isSelected = (place) => selectedPlaces.includes(place);
 
   const toggle = () => setModal(!modal);
@@ -77,7 +78,7 @@ const Recommend = ({ setMyPlaces, places }) => {
     e.preventDefault();
 
     const response = await myAxios(
-      "/v2/local/search/keyword.json?query=" + query,
+      "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + query,
       "GET",
     );
 
@@ -104,14 +105,18 @@ const Recommend = ({ setMyPlaces, places }) => {
       params.append("selectedPlacesData", selectedPlacesData);
       params.append("reviews", reviews);
 
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("nameFile", file.name);
+      formData.append("placeId", selectedPlaces[0].id); // Update with appropriate place id
+
       const token = localStorage.getItem("token");
       const response = await axios.post(
         "http://localhost:8080/api/v1/recommend/submit-selected-places",
-        {},
+        formData,
         {
           headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+            Authorization: `Bearer ${token}`,
           },
           params: params,
         },
@@ -121,6 +126,7 @@ const Recommend = ({ setMyPlaces, places }) => {
         setSuccessMessage("Selected places submitted successfully.");
         toast.success("Selected places submitted successfully.");
         setReviews("");
+        // toggle(); // Close the modal
       }
     } catch (error) {
       setErrorMessage("Failed to submit selected places.");
@@ -261,7 +267,12 @@ const Recommend = ({ setMyPlaces, places }) => {
                 }}
                 onBlur={(e) => setReviews(e.target.innerText)} // Corrected placement of onBlur event
               ></div>
-
+              <input
+                type="file"
+                name="file"
+                accept="image/*"
+                onChange={(e) => setFile(e.target.files[0])} // Handle file selection
+              />
               {/* Add a button to send selected places to the server */}
               <div
                 style={{

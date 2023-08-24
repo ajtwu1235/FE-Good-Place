@@ -1,10 +1,7 @@
-import "./detail.css";
-
 import YourReviewModal from "./YourReviewModal";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PlaceMap from "./Map";
-import { data } from "../data/place";
 
 const Information = ({ placeId }) => {
   const [modalShow, setModalShow] = useState(false);
@@ -37,44 +34,38 @@ const Information = ({ placeId }) => {
 
   return (
     <>
-      <div
-        style={{
-          marginTop: "80px",
-        }}
-      >
-        <ul style={{ listStyleType: "none", listStyle: "none" }}>
-          <div className="detail_text_container">
-            <div className="detail_title_box">
-              <p className="detail_title">식당이름</p>
-              <div className=" detail_title_box detail_wrap">
-                <button
-                  className=" detail_title_box detail_review"
-                  onClick={() => setModalShow(true)}
-                >
-                  <img src="/images/review1.svg" alt="" />
-                  <p className="detail_text">Review</p>
-                </button>
-                <button className=" detail_title_box detail_like">
-                  <img src="/images/heart-1.svg" alt="" />
-                  <p className="detail_text">Like</p>
-                </button>
-              </div>
+      <div style={{ marginTop: "80px" }}>
+        <div className="detail_text_container">
+          <div className="detail_title_box">
+            <p className="detail_title">{storeData.name}</p>
+            <div className="detail_title_box detail_wrap">
+              <button
+                className="detail_title_box detail_review"
+                onClick={() => setModalShow(true)}
+              >
+                <img src="/images/review1.svg" alt="" />
+                <p className="detail_text">Review</p>
+              </button>
+              <button className="detail_title_box detail_like">
+                <img src="/images/heart-1.svg" alt="" />
+                <p className="detail_text">Like</p>
+              </button>
             </div>
-            <div className="detail_sm">
-              <div className="detail_sm detail_sm_wrap">
-                <div className=" detail_sm detail_review_sm">
-                  <img src="/images/review1.svg" alt="" />
-                  <p>1234</p>
-                </div>
-                <div className="detail_sm detail_like_sm">
-                  <img src="/images/heart-1.svg" alt="" />
-                  <p>1234</p>
-                </div>
+          </div>
+          <div className="detail_sm">
+            <div className="detail_sm detail_sm_wrap">
+              <div className="detail_sm detail_review_sm">
+                <img src="/images/review1.svg" alt="" />
+                <p>1234</p>
+              </div>
+              <div className="detail_sm detail_like_sm">
+                <img src="/images/heart-1.svg" alt="" />
+                <p>1234</p>
               </div>
             </div>
           </div>
-          <hr />
-        </ul>
+        </div>
+        <hr />
         <ul
           style={{
             marginTop: "31px",

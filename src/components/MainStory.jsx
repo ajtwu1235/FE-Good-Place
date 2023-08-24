@@ -6,6 +6,7 @@ const MainStory = () => {
   const StoryContainer = {
     display: "flex",
     justifyContent: "space-evenly",
+    alignItems:"flex-start"
   };
 
   return (

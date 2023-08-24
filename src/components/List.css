@@ -68,3 +68,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
+.list_wrap > img{
+    width: 588px;
+    height: 442px;
+}

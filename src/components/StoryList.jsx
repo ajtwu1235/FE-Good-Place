@@ -4,7 +4,6 @@ import axios from "axios";
 const StoryList = () => {
   const StoryListBox = {
     width: "442px",
-    overflow: "auto",
     display: "flex",
     flexDirection: "column",
     marginTop: "70px",

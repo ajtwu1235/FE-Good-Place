@@ -6,14 +6,14 @@ import DetailReview from "./DetailReview";
 import DetailComment from "./DetailComment";
 import DetailCommentInput from "./DetailCommentInput";
 import { useParams } from "react-router";
-import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
+// import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 
 import "./detail.css";
-import firebaseConfig from "./FirebaseConfig"; // Import the FirebaseConfig component
-import { initializeApp } from "firebase/app"; // Import initializeApp directly from "firebase/app"
+// import firebaseConfig from "./FirebaseConfig"; // Import the FirebaseConfig component
+// import { initializeApp } from "firebase/app"; // Import initializeApp directly from "firebase/app"
 
 // Initialize Firebase using the configuration from FirebaseConfig
-initializeApp(firebaseConfig);
+// initializeApp(firebaseConfig);
 // Initialize Firebase
 // Initialize Firebase
 
@@ -61,28 +61,28 @@ const responsive = {
 const Slider = () => {
   const { placeId } = useParams();
   const [sliderImageUrl, setSliderImageUrl] = useState([]);
-  useEffect(() => {
-    // Reference to the Firebase storage bucket
-    const storage = getStorage();
-    const storageRef = ref(storage, "/" + placeId);
+  // useEffect(() => {
+  //   // Reference to the Firebase storage bucket
+  //   const storage = getStorage();
+  //   const storageRef = ref(storage, "/" + placeId);
+  //
+  //   const fetchImageUrls = async () => {
+  //     try {
+  //       const imageRefs = await listAll(storageRef);
+  //       const urls = await Promise.all(
+  //         imageRefs.items.map(async (item) => {
+  //           const url = await getDownloadURL(item);
+  //           return { url };
+  //         }),
+  //       );
+  //       setSliderImageUrl(urls);
+  //     } catch (error) {
+  //       console.error("Error fetching image URLs from Firebase:", error);
+  //     }
+  //   };
 
-    const fetchImageUrls = async () => {
-      try {
-        const imageRefs = await listAll(storageRef);
-        const urls = await Promise.all(
-          imageRefs.items.map(async (item) => {
-            const url = await getDownloadURL(item);
-            return { url };
-          }),
-        );
-        setSliderImageUrl(urls);
-      } catch (error) {
-        console.error("Error fetching image URLs from Firebase:", error);
-      }
-    };
-
-    fetchImageUrls();
-  }, [placeId]);
+  //   fetchImageUrls();
+  // }, [placeId]);
   return (
     <>
       <div

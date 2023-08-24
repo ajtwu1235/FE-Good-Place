@@ -1,42 +1,42 @@
 import { useEffect, useState } from "react";
 import "./List.css";
 import axios from "axios";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+// import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const ListPage = () => {
   const [data, setData] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
-  const storage = getStorage();
+  // const storage = getStorage();
   const getData = () =>
     axios.get("http://localhost:8080/api/v1/client?size=8").then((response) => {
       console.log(response.data);
       setData(response.data.content);
     });
 
-  const getImageUrls = async () => {
-    try {
-      const imageRefs = data.map((el) =>
-        ref(storage, `${el.placeId}/${el.placeId}`),
-      );
-      const urls = await Promise.all(
-        imageRefs.map(async (imageRef) => {
-          const url = await getDownloadURL(imageRef);
-          return url;
-        }),
-      );
-      setImageUrls(urls);
-    } catch (error) {
-      console.error("Error fetching image URLs from Firebase:", error);
-    }
-  };
+  // const getImageUrls = async () => {
+  //   try {
+  //     const imageRefs = data.map((el) =>
+  //       ref(storage, `${el.placeId}/${el.placeId}`),
+  //     );
+  //     const urls = await Promise.all(
+  //       imageRefs.map(async (imageRef) => {
+  //         const url = await getDownloadURL(imageRef);
+  //         return url;
+  //       }),
+  //     );
+  //     setImageUrls(urls);
+  //   } catch (error) {
+  //     console.error("Error fetching image URLs from Firebase:", error);
+  //   }
+  // };
 
   useEffect(() => {
     getData();
   }, []);
 
-  useEffect(() => {
-    getImageUrls(); // Fetch image URLs after data is fetched
-  }, [data]); // Trigger fetching image URLs whenever data changes
+  // useEffect(() => {
+  //   getImageUrls(); // Fetch image URLs after data is fetched
+  // }, [data]); // Trigger fetching image URLs whenever data changes
 
   console.log(data);
   console.log(imageUrls);
@@ -59,7 +59,7 @@ const ListPage = () => {
             {/* 여기서부터 한줄 시작 */}
             <div className="flexRow">
               {data.map((el, index) => (
-                <div key={el.id}>
+                <div className="list_wrap" key={el.id}>
                   {" "}
                   {/* Make sure to include a unique key */}
                   <p className="titleStyle">{el.address}</p>
@@ -67,7 +67,8 @@ const ListPage = () => {
                   <a href={`/page_detail/${el.placeId}`}>
                     {" "}
                     {/* Include the placeId in the link */}
-                    <img src={imageUrls[index]} alt="sunflower" />
+                    <img src="images/sunflower.png" alt="sunflower" />
+                    {/*<img src={imageUrls[index]} alt="sunflower" />*/}
                   </a>
                 </div>
               ))}

@@ -6,7 +6,13 @@ import DetailReview from "./DetailReview";
 import DetailComment from "./DetailComment";
 import DetailCommentInput from "./DetailCommentInput";
 import { useParams } from "react-router";
-import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  listAll,
+  getDownloadURL,
+  deleteObject, // Add this line
+} from "firebase/storage";
 
 import "./detail.css";
 import firebaseConfig from "./FirebaseConfig"; // Import the FirebaseConfig component
@@ -83,12 +89,29 @@ const Slider = () => {
 
     fetchImageUrls();
   }, [placeId]);
+
+  const deleteImage = async (index) => {
+    const imageUrlToDelete = sliderImageUrl[index].url;
+
+    try {
+      // Reference to the Firebase storage bucket
+      const storage = getStorage();
+      const imageRef = ref(storage, imageUrlToDelete);
+
+      // Delete the image from Firebase Storage
+      await deleteObject(imageRef);
+
+      // Update the sliderImageUrl state after deleting
+      const updatedUrls = sliderImageUrl.filter((_, i) => i !== index);
+      setSliderImageUrl(updatedUrls);
+    } catch (error) {
+      console.error("Error deleting image from Firebase:", error);
+    }
+  };
+
   return (
     <>
-      <div
-        className="parent"
-        style={{ width: "90%", margin: "auto"}}
-      >
+      <div className="parent" style={{ width: "90%", margin: "auto" }}>
         <Carousel
           responsive={responsive}
           autoPlay={true}
@@ -103,12 +126,13 @@ const Slider = () => {
             return (
               <div className="slider" key={index}>
                 <img src={imageUrl.url} alt="movie" />
+                {/*<button onClick={() => deleteImage(index)}>Delete</button>*/}
               </div>
             );
           })}
         </Carousel>
         <Information placeId={placeId} />
-        <DetailReview ></DetailReview>
+        <DetailReview></DetailReview>
         {/*<DetailComment></DetailComment>*/}
         {/*<DetailCommentInput></DetailCommentInput>*/}
       </div>

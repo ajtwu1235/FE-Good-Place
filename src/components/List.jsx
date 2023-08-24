@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./List.css";
 import axios from "axios";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL, list } from "firebase/storage";
 
 const ListPage = () => {
   const [data, setData] = useState([]);
@@ -15,13 +15,18 @@ const ListPage = () => {
 
   const getImageUrls = async () => {
     try {
-      const imageRefs = data.map((el) =>
-        ref(storage, `${el.placeId}/${el.placeId}`),
-      );
       const urls = await Promise.all(
-        imageRefs.map(async (imageRef) => {
-          const url = await getDownloadURL(imageRef);
-          return url;
+        data.map(async (el) => {
+          const imageRef = ref(storage, `${el.placeId}`);
+          const imageList = await list(imageRef);
+
+          if (imageList.items.length > 0) {
+            const firstImageRef = imageList.items[0];
+            const url = await getDownloadURL(firstImageRef);
+            return url;
+          }
+
+          return null;
         }),
       );
       setImageUrls(urls);

@@ -106,9 +106,14 @@ const Recommend = ({ setMyPlaces, places }) => {
       params.append("reviews", reviews);
 
       const formData = new FormData();
-      formData.append("file", file);
-      formData.append("nameFile", file.name);
-      formData.append("placeId", selectedPlaces[0].id); // Update with appropriate place id
+
+      for (let i = 0; i < file.length; i++) {
+        formData.append("files", file[i]);
+        formData.append("nameFiles", file[i].name); // Add corresponding file names
+      }
+
+      // Add other form data fields
+      formData.append("placeId", selectedPlaces[0].id);
 
       const token = localStorage.getItem("token");
       const response = await axios.post(
@@ -126,7 +131,6 @@ const Recommend = ({ setMyPlaces, places }) => {
         setSuccessMessage("Selected places submitted successfully.");
         toast.success("Selected places submitted successfully.");
         setReviews("");
-        // toggle(); // Close the modal
       }
     } catch (error) {
       setErrorMessage("Failed to submit selected places.");
@@ -271,7 +275,8 @@ const Recommend = ({ setMyPlaces, places }) => {
                 type="file"
                 name="file"
                 accept="image/*"
-                onChange={(e) => setFile(e.target.files[0])} // Handle file selection
+                onChange={(e) => setFile(e.target.files)} // Handle file selection
+                multiple
               />
               {/* Add a button to send selected places to the server */}
               <div

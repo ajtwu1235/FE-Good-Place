@@ -19,7 +19,7 @@ const StoryBox2 = ({ storeId }) => {
     <>
       {data.map((el, index) => (
         <div className="storyBox">
-          <div className="storybox_wrap">
+          <div className="storybox_wrap_fixed">
             <img
               src="/images/friedpork.png"
               alt="pork"

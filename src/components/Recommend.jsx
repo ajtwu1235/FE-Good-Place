@@ -141,11 +141,16 @@ const Recommend = ({ setMyPlaces, places }) => {
       toast.error("Failed to submit selected places.");
     }
   };
+  const userId = localStorage.getItem("userId");
   const getData = () =>
-    axios.get("http://localhost:8080/api/v1/client?size=8").then((response) => {
-      console.log(response.data);
-      setData(response.data.content);
-    });
+    axios
+      .get("http://localhost:8080/api/v1/recommend/" + userId)
+      .then((response) => {
+        console.log(response.data);
+        const storeDataArray = response.data.map((item) => item.store); // Extract the 'store' object from each item
+        setData(storeDataArray);
+        console.log("set data : ", storeDataArray);
+      });
 
   const getImageUrls = async () => {
     try {
@@ -228,15 +233,11 @@ const Recommend = ({ setMyPlaces, places }) => {
         ))}
       </div>
       <div className="flexRow">
-        {data.map((el, index) => (
-          <div key={el.id}>
-            {" "}
-            {/* Make sure to include a unique key */}
-            <p className="titleStyle">{el.address}</p>
-            <p className="subTitleStyle">{el.name}</p>
-            <a href={`/page_detail/${el.placeId}`}>
-              {" "}
-              {/* Include the placeId in the link */}
+        {data.map((store, index) => (
+          <div key={store.id}>
+            <p className="titleStyle">{store.address}</p>
+            <p className="subTitleStyle">{store.name}</p>
+            <a href={`/page_detail/${store.placeId}`}>
               <img src={imageUrls[index]} alt="sunflower" />
             </a>
           </div>

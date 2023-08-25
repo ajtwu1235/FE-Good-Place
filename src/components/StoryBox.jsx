@@ -122,11 +122,6 @@ const StoryBox = () => {
                   <div className="storybox_wrap1">
                       <p className="story_text story_text1">Editer.</p>
                       <p className="story_text story_text2">현수정</p>
-                      <img
-                          src="/images/heart-1.svg"
-                          alt="heart"
-                          className="story_like"
-                      />
                   </div>
                   <p className="story_text story_title">
                       수정이가 선택한 제주맛집 10곳

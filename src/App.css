@@ -329,3 +329,13 @@ button{
 .file_button{
   margin-top: 10px;
 }
+
+.photo_size > img {
+  width: 499px;
+  height: 487px;
+}
+
+.slider > img{
+  width: 310px;
+  height: 330px;
+}

@@ -59,6 +59,24 @@ const Information = ({ placeId }) => {
     getTotalReview();
   }, []);
 
+  const userId = localStorage.getItem("userId");
+  const id = storeData.id;
+  const postFav = () => {
+    axios
+      .post("http://localhost:8080/favorite", {
+        userId: userId, // Replace with the actual user ID
+        storeId: id, // Replace with the actual store ID
+      })
+      .then((response) => {
+        console.log(response);
+        // Handle any other logic after successful POST
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle error cases
+      });
+  };
   return (
     <>
       <div style={{ marginTop: "80px" }}>
@@ -73,7 +91,10 @@ const Information = ({ placeId }) => {
                 <img src="/images/review1.svg" alt="" />
                 <p className="detail_text">Review</p>
               </button>
-              <button className="detail_title_box detail_like">
+              <button
+                className="detail_title_box detail_like"
+                onClick={postFav}
+              >
                 <img src="/images/heart-1.svg" alt="" />
                 <p className="detail_text">Like</p>
               </button>

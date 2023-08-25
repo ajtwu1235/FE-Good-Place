@@ -29,7 +29,7 @@ const Places = ({ places }) => {
       params.append("selectedPlacesData", selectedPlacesData);
 
       const response = await axios.post(
-        "http://localhost:8080" +
+        "http://192.168.0.172:8080" +
           `/api/v1/client/submit-selected-places?${params.toString()}`,
         {},
         { headers: { "Content-Type": "application/json" } },

@@ -108,7 +108,7 @@ const Recommend = ({ setMyPlaces }) => {
       const selectedPlaceIds = selectedData.map((place) => place.id);
 
       const response = await axios.post(
-        "http://localhost:8080/api/v1/client/submit-selected-places",
+        "http://192.168.0.172:8080/api/v1/client/submit-selected-places",
         {
           selectedPlaceIds: selectedPlaceIds,
         },

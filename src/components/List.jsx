@@ -8,10 +8,12 @@ const ListPage = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const storage = getStorage();
   const getData = () =>
-    axios.get("http://localhost:8080/api/v1/client?size=8").then((response) => {
-      console.log(response.data);
-      setData(response.data.content);
-    });
+    axios
+      .get("http://192.168.0.172:8080/api/v1/client?size=8")
+      .then((response) => {
+        console.log(response.data);
+        setData(response.data.content);
+      });
 
   const getImageUrls = async () => {
     try {
@@ -64,7 +66,7 @@ const ListPage = () => {
             {/* 여기서부터 한줄 시작 */}
             <div className="flexRow">
               {data.map((el, index) => (
-                <div key={el.id} >
+                <div key={el.id}>
                   {" "}
                   {/* Make sure to include a unique key */}
                   <p className="titleStyle">{el.address}</p>

@@ -129,7 +129,7 @@ const Recommend = ({ setMyPlaces, places }) => {
 
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:8080/api/v1/recommend/submit-selected-places",
+        "http://192.168.0.172:8080/api/v1/recommend/submit-selected-places",
         formData,
         {
           headers: {
@@ -152,7 +152,7 @@ const Recommend = ({ setMyPlaces, places }) => {
   const userId = localStorage.getItem("userId");
   const getData = () =>
     axios
-      .get("http://localhost:8080/api/v1/recommend/" + userId)
+      .get("http://192.168.0.172:8080/api/v1/recommend/" + userId)
       .then((response) => {
         console.log(response.data);
         const storeDataArray = response.data.map((item) => item.storeDto); // Use storeDto instead of store

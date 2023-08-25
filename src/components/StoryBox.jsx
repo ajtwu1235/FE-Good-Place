@@ -4,9 +4,9 @@ import axios from "axios";
 
 const StoryBox = () => {
   const [data, setData] = useState([]);
-
+  console.log("userId", data);
   const getData = () =>
-    axios.get("http://localhost:8080/favorite").then((response) => {
+    axios.get("http://192.168.0.172:8080/favorite").then((response) => {
       console.log(response.data);
       setData(response.data);
     });
@@ -20,7 +20,7 @@ const StoryBox = () => {
       {data.map((el, index) => (
         <div className="storyBox">
           <div className="storybox_wrap">
-            <a href={`/mainStory/${index}`} className="photo_size">
+            <a href={`/mainStory/${index}/${el[0]}`} className="photo_size">
               <img
                 src="/images/friedpork.png"
                 alt="pork"

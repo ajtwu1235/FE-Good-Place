@@ -2,7 +2,7 @@ import "./story.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { getDownloadURL, getStorage, list, ref } from "firebase/storage";
-const StoryList = () => {
+const StoryList = ({ storeId }) => {
   const StoryListBox = {
     width: "442px",
     display: "flex",
@@ -24,10 +24,10 @@ const StoryList = () => {
   const [data, setData] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const storage = getStorage();
-  const userId = localStorage.getItem("userId");
+  const userId = storeId;
   const getData = () =>
     axios
-      .get("http://localhost:8080/favorite/user/" + userId)
+      .get("http://192.168.0.172:8080/favorite/user/" + userId)
       .then((response) => {
         console.log(response.data);
         const storeDataArray = response.data.map((item) => item.store); // Extract the 'store' object from each item
@@ -65,6 +65,17 @@ const StoryList = () => {
   console.log(data);
   console.log(imageUrls);
   console.log(data);
+
+  const getTest = () =>
+    axios.get("http://192.168.0.172:8080/favorite").then((response) => {
+      console.log("test: ", response.data);
+    });
+
+  useEffect(() => {
+    getTest();
+  }, []);
+
+  getTest();
   return (
     <>
       <div style={StoryListBox}>

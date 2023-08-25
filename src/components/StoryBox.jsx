@@ -11,22 +11,22 @@ const StoryBox = () => {
       setData(response.data);
     });
 
-
   useEffect(() => {
     getData();
   }, []);
 
   return (
     <>
-      {data.map((el) => (
+      {data.map((el, index) => (
         <div className="storyBox">
           <div className="storybox_wrap">
-            <img
-              src="/images/friedpork.png"
-              alt="pork"
-              className="story_food_img"
-            />
-
+            <a href={`/mainStory/${el[index]}`} className="photo_size">
+              <img
+                src="/images/friedpork.png"
+                alt="pork"
+                className="story_food_img"
+              />
+            </a>
             <div className="storybox_text">
               <div className="storybox_wrap1">
                 <p className="story_text story_text1">Editer.</p>
@@ -37,14 +37,11 @@ const StoryBox = () => {
               </p>
               <p className="story_text story_title2"> 맛집 인기 터짐!</p>
               <div className="storybox_wrap2">
-                <a href="/mainStory/" >
                 <img
                   src="/images/heart-1.svg"
                   alt="heart"
                   className="story_like_small"
                 />
-                </a>
-               
                 <span className="story_text story_like_count">{el[3]}</span>
               </div>
             </div>

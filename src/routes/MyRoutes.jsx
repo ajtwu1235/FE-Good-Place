@@ -40,7 +40,7 @@ const MyRoutes = () => {
         />
         <Route path="/story" element={<Story />}></Route>
         <Route path="/list" element={<ListPage />}></Route>
-        <Route path="/mainStory" element={<MainStory />}></Route>
+        <Route path="/mainStory/:storeId" element={<MainStory />}></Route>
       </Route>
       <Route path="/redirect" element={<KakaoLoginRedirect />}></Route>
     </Routes>

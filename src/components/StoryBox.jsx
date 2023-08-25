@@ -11,6 +11,7 @@ const StoryBox = () => {
       setData(response.data);
     });
 
+
   useEffect(() => {
     getData();
   }, []);
@@ -29,27 +30,22 @@ const StoryBox = () => {
             <div className="storybox_text">
               <div className="storybox_wrap1">
                 <p className="story_text story_text1">Editer.</p>
-                <p className="story_text story_text2">{el.username}</p>
-
-                <img
-                  src="/images/friedpork.png"
-                  alt="pork"
-                  className="story_food_img"
-                />
+                <p className="story_text story_text2">{el[1]}</p>
               </div>
               <p className="story_text story_title">
-                {el.username}이가 선택한 제주맛집 {el.count}곳
+                {el[1]}(이)가 선택한 맛집 {el[2]}곳
               </p>
-              <p className="story_text story_title2">제주 인기 터짐!</p>
+              <p className="story_text story_title2"> 맛집 인기 터짐!</p>
               <div className="storybox_wrap2">
-                <span className="story_text story_create_date">2023-08-10</span>
-                <span className="story_text story_text_bar">|</span>
+                <a href="/mainStory/" >
                 <img
                   src="/images/heart-1.svg"
                   alt="heart"
                   className="story_like_small"
                 />
-                <span className="story_text story_like_count">123</span>
+                </a>
+               
+                <span className="story_text story_like_count">{el[3]}</span>
               </div>
             </div>
           </div>

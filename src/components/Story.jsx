@@ -5,18 +5,6 @@ import axios from "axios";
 
 const Story = () => {
 
-  const [data,setData]= useState([])
-
-  const getData = () =>
-    axios.get("http://localhost:8080/favorite").then((response) => {
-      console.log(response.data);
-      setData(response.data.content);
-    });
-
-    useEffect(() => {
-      getData();
-    }, []);
-  
 
   return (
     <>

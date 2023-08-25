@@ -14,7 +14,7 @@ const StoryBox = () => {
   useEffect(() => {
     getData();
   }, []);
-console.log(data)
+  console.log(data);
   return (
     <>
       {data.map((el, index) => (
@@ -30,10 +30,10 @@ console.log(data)
             <div className="storybox_text">
               <div className="storybox_wrap1">
                 <p className="story_text story_text1">Editer.</p>
-                <p className="story_text story_text2">{el.username}</p>
+                <p className="story_text story_text2">{el[1]}</p>
               </div>
               <p className="story_text story_title">
-                {el.username}(이)가 선택한 맛집 {el.count}곳
+                {el[1]}(이)가 선택한 맛집 {el[2]}곳
               </p>
               <p className="story_text story_title2"> 맛집 인기 터짐!</p>
               <div className="storybox_wrap2">

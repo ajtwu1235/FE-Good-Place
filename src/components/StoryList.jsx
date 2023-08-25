@@ -24,11 +24,16 @@ const StoryList = () => {
   const [data, setData] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const storage = getStorage();
+  const userId = localStorage.getItem("userId");
   const getData = () =>
-    axios.get("http://localhost:8080/api/v1/client?size=8").then((response) => {
-      console.log(response.data);
-      setData(response.data.content);
-    });
+    axios
+      .get("http://localhost:8080/api/v1/recommend/" + userId)
+      .then((response) => {
+        console.log(response.data);
+        const storeDataArray = response.data.map((item) => item.store); // Extract the 'store' object from each item
+        setData(storeDataArray);
+        console.log("set data : ", storeDataArray);
+      });
   const getImageUrls = async () => {
     try {
       const urls = await Promise.all(

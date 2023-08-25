@@ -27,7 +27,7 @@ const StoryList = () => {
   const userId = localStorage.getItem("userId");
   const getData = () =>
     axios
-      .get("http://localhost:8080/api/v1/recommend/" + userId)
+      .get("http://localhost:8080/favorite/user/" + userId)
       .then((response) => {
         console.log(response.data);
         const storeDataArray = response.data.map((item) => item.store); // Extract the 'store' object from each item

@@ -74,6 +74,7 @@ const Recommend = ({ setMyPlaces, places }) => {
   const [file, setFile] = useState(null);
   const [data, setData] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
+
   const storage = getStorage();
   const isSelected = (place) => selectedPlaces.includes(place);
 
@@ -154,7 +155,7 @@ const Recommend = ({ setMyPlaces, places }) => {
       .get("http://localhost:8080/api/v1/recommend/" + userId)
       .then((response) => {
         console.log(response.data);
-        const storeDataArray = response.data.map((item) => item.store); // Extract the 'store' object from each item
+        const storeDataArray = response.data.map((item) => item.storeDto); // Use storeDto instead of store
         setData(storeDataArray);
         console.log("set data : ", storeDataArray);
       });

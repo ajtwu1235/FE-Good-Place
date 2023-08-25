@@ -1,10 +1,11 @@
+import { initializeApp } from "firebase/app"; // Import initializeApp directly from "firebase/app"
+
 import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Information from "./Information";
 import DetailReview from "./DetailReview";
-import DetailComment from "./DetailComment";
-import DetailCommentInput from "./DetailCommentInput";
+
 import { useParams } from "react-router";
 import {
   getStorage,
@@ -16,12 +17,9 @@ import {
 
 import "./detail.css";
 import firebaseConfig from "./FirebaseConfig"; // Import the FirebaseConfig component
-import { initializeApp } from "firebase/app"; // Import initializeApp directly from "firebase/app"
 
 // Initialize Firebase using the configuration from FirebaseConfig
 initializeApp(firebaseConfig);
-// Initialize Firebase
-// Initialize Firebase
 
 const responsive = {
   desktop: {

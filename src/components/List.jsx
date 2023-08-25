@@ -64,12 +64,12 @@ const ListPage = () => {
             {/* 여기서부터 한줄 시작 */}
             <div className="flexRow">
               {data.map((el, index) => (
-                <div key={el.id}>
+                <div key={el.id} >
                   {" "}
                   {/* Make sure to include a unique key */}
                   <p className="titleStyle">{el.address}</p>
                   <p className="subTitleStyle">{el.name}</p>
-                  <a href={`/page_detail/${el.placeId}`}>
+                  <a href={`/page_detail/${el.placeId}`} className="photo_size">
                     {" "}
                     {/* Include the placeId in the link */}
                     <img src={imageUrls[index]} alt="sunflower" />

@@ -128,7 +128,11 @@
     font-weight: 300;
     margin: 5px 0 0 15px;
 }
-
+.popular_box>img{
+    width: 378px;
+    height: 322px;
+    border-radius: 20px;
+}
 /* SHARED PHOTOS */
 
 .photoBox{

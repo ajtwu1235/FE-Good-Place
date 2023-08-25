@@ -32,6 +32,33 @@ const Information = ({ placeId }) => {
       });
   }, [placeId]);
 
+  //좋아요 수 가져오기
+
+  const [totalFav, setTotalFav] = useState(0);
+
+  const getTotalFav = () =>
+    axios.get("http://localhost:8080/favorite/" + placeId).then((response) => {
+      setTotalFav(response.data);
+      console.log(response);
+    });
+
+  //리뷰 수 가져오기
+
+  const [totalReview, setTotalReview] = useState(0);
+
+  const getTotalReview = () =>
+    axios
+      .get("http://localhost:8080/api/v1/reviews/count/" + placeId)
+      .then((response) => {
+        setTotalReview(response.data);
+        console.log(response);
+      });
+
+  useEffect(() => {
+    getTotalFav();
+    getTotalReview();
+  }, []);
+
   return (
     <>
       <div style={{ marginTop: "80px" }}>
@@ -56,11 +83,11 @@ const Information = ({ placeId }) => {
             <div className="detail_sm detail_sm_wrap">
               <div className="detail_sm detail_review_sm">
                 <img src="/images/review1.svg" alt="" />
-                <p>1234</p>
+                <p>{totalReview}</p>
               </div>
               <div className="detail_sm detail_like_sm">
                 <img src="/images/heart-1.svg" alt="" />
-                <p>1234</p>
+                <p>{totalFav}</p>
               </div>
             </div>
           </div>
@@ -92,7 +119,12 @@ const Information = ({ placeId }) => {
           coordinateY={storeData.coordinateY}
         />
       </div>
-      <YourReviewModal show={modalShow} onHide={() => setModalShow(false)} storeId={storeData.id} placeId={placeId} />
+      <YourReviewModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        storeId={storeData.id}
+        placeId={placeId}
+      />
     </>
   );
 };

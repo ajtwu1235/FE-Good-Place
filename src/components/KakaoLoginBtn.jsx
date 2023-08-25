@@ -29,8 +29,8 @@ const KakaoLoginButton = () => {
   return (
     <>
       <button style={kakaoBtn} onClick={handleKakaoLogin}>
-        <div className='login_btn_inner'>
-          <img src="images/kakao-1.png"></img>
+        <div className="login_btn_inner">
+          <img src="/images/kakao-1.png" />
           <span className="login_btn_text"> Kakao톡으로 계속하기 </span>
         </div>
       </button>

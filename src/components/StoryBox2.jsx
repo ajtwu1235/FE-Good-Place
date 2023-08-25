@@ -7,7 +7,7 @@ const StoryBox2 = () => {
           <img
             src="/images/friedpork.png"
             alt="pork"
-            className="story_food_img"
+            className="story_food_img"/>
 
           <div className="storybox_text">
             <div className="storybox_wrap1">

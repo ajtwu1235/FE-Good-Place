@@ -1,16 +1,15 @@
-
 function KakaoLoginRedirect() {
-    localStorage.clear();
+  localStorage.clear();
 
+  console.log(window.location);
 
-    console.log(window.location)
-
-    const searchParams = new URLSearchParams(window.location.search);
-    const token = searchParams.get('token'); // 'token' 파라미터 값
-    localStorage.setItem("token",token)
-
-
-    window.location.href="/"
+  const searchParams = new URLSearchParams(window.location.search);
+  const token = searchParams.get("token"); // 'token' 파라미터 값
+  const userId = searchParams.get("userId");
+  localStorage.setItem("token", token);
+  localStorage.setItem("userId", userId);
+  console.log(userId);
+  window.location.href = "/";
   return <></>;
 }
 

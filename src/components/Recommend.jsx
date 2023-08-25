@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalHeader,
@@ -12,6 +12,7 @@ import { myAxios } from "../network/api";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getDownloadURL, getStorage, list, ref } from "firebase/storage";
 const RotatedDiv = ({ onClick }) => {
   return (
     <div
@@ -70,6 +71,9 @@ const Recommend = ({ setMyPlaces, places }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [reviews, setReviews] = useState("");
   const [file, setFile] = useState(null);
+  const [data, setData] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]);
+  const storage = getStorage();
   const isSelected = (place) => selectedPlaces.includes(place);
 
   const toggle = () => setModal(!modal);
@@ -137,7 +141,44 @@ const Recommend = ({ setMyPlaces, places }) => {
       toast.error("Failed to submit selected places.");
     }
   };
+  const getData = () =>
+    axios.get("http://localhost:8080/api/v1/client?size=8").then((response) => {
+      console.log(response.data);
+      setData(response.data.content);
+    });
 
+  const getImageUrls = async () => {
+    try {
+      const urls = await Promise.all(
+        data.map(async (el) => {
+          const imageRef = ref(storage, `${el.placeId}`);
+          const imageList = await list(imageRef);
+
+          if (imageList.items.length > 0) {
+            const firstImageRef = imageList.items[0];
+            const url = await getDownloadURL(firstImageRef);
+            return url;
+          }
+
+          return null;
+        }),
+      );
+      setImageUrls(urls);
+    } catch (error) {
+      console.error("Error fetching image URLs from Firebase:", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    getImageUrls(); // Fetch image URLs after data is fetched
+  }, [data]); // Trigger fetching image URLs whenever data changes
+
+  console.log(data);
+  console.log(imageUrls);
   return (
     <>
       <div
@@ -184,6 +225,21 @@ const Recommend = ({ setMyPlaces, places }) => {
       <div style={{ textAlign: "center" }} className="place insert">
         {[1, 2, 3].map((item) => (
           <RotatedDiv key={item} onClick={toggle} />
+        ))}
+      </div>
+      <div className="flexRow">
+        {data.map((el, index) => (
+          <div key={el.id}>
+            {" "}
+            {/* Make sure to include a unique key */}
+            <p className="titleStyle">{el.address}</p>
+            <p className="subTitleStyle">{el.name}</p>
+            <a href={`/page_detail/${el.placeId}`}>
+              {" "}
+              {/* Include the placeId in the link */}
+              <img src={imageUrls[index]} alt="sunflower" />
+            </a>
+          </div>
         ))}
       </div>
       <Modal isOpen={modal} toggle={toggle}>
@@ -272,7 +328,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                 onBlur={(e) => setReviews(e.target.innerText)} // Corrected placement of onBlur event
               ></div>
               <input
-                  className="file_button"
+                className="file_button"
                 type="file"
                 name="file"
                 accept="image/*"
@@ -291,7 +347,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                   style={{
                     width: "200px",
                     height: "30px",
-                      padding: "8px 0",
+                    padding: "8px 0",
                     background:
                       "linear-gradient(90deg, #CD1A40 0%, #FF803C 100%)",
                     borderRadius: "8px",

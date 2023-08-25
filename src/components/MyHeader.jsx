@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"; // Import useEffect
 import LoginModal from "./LoginModal";
 import { Button } from "react-bootstrap";
+import { useParams } from "react-router";
 
 const MyHeader = () => {
   const [modalShow, setModalShow] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const token = localStorage.getItem("token"); // Get token from local storage
-
+  const userId = localStorage.getItem("userId");
   useEffect(() => {
     // Update isLoggedIn state based on token presence
     setIsLoggedIn(token !== null);
@@ -79,7 +80,9 @@ const MyHeader = () => {
               {isLoggedIn && (
                 <>
                   <li className="nav-item" style={headerStyle}>
-                    <Link className="nav-link list" to="/recommend">
+                    <Link className="nav-link list" to={`/recommend/${userId}`}>
+                      {" "}
+                      {/* Use userId in the link */}
                       Recommend
                     </Link>
                   </li>

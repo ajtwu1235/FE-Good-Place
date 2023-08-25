@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Template from "../template/Template";
 import KakaoLoginRedirect from "../components/KakaoLoginRedirect";
 import MainStory from "../components/MainStory";
@@ -13,7 +13,19 @@ import Story from "../components/Story";
 
 import MainRectangle from "../components/MainRectangle";
 import DetailReview from "../components/DetailReview";
+import { useParams } from "react-router";
+const RecommendWrapper = () => {
+  const { userId } = useParams();
+  const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
 
+  useEffect(() => {
+    // Fetch user-specific data using userId and update myPlaces
+    // Example: const userPlaces = fetchUserPlacesFromAPI(userId);
+    // setMyPlaces(userPlaces);
+  }, [userId]);
+
+  return <Recommend places={myPlaces} setMyPlaces={setMyPlaces} />;
+};
 const MyRoutes = () => {
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
 
@@ -21,14 +33,10 @@ const MyRoutes = () => {
     <Routes>
       <Route element={<Template />}>
         <Route path="/" element={<MainRectangle />} />
-        <Route
-          path="/recommend"
-          element={<Recommend places={myPlaces} setMyPlaces={setMyPlaces} />}
-        />
+        <Route path="/recommend/:userId" element={<RecommendWrapper />} />
         <Route
           path="/page_detail/:placeId"
-          element={<Slider places={myPlaces}
-          component={DetailReview}/>}
+          element={<Slider places={myPlaces} component={DetailReview} />}
         />
         <Route path="/story" element={<Story />}></Route>
         <Route path="/list" element={<ListPage />}></Route>

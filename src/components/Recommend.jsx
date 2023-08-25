@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./List.css";
 import {
   Modal,
   ModalHeader,
@@ -76,7 +77,13 @@ const Recommend = ({ setMyPlaces, places }) => {
   const storage = getStorage();
   const isSelected = (place) => selectedPlaces.includes(place);
 
-  const toggle = () => setModal(!modal);
+  const toggle = () => {
+    setModal(!modal);
+    if (modal) {
+      // Refresh the page if the modal is being closed
+      window.location.reload();
+    }
+  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -228,17 +235,28 @@ const Recommend = ({ setMyPlaces, places }) => {
         </ul>
       </div>
       <div style={{ textAlign: "center" }} className="place insert">
-        {[1, 2, 3].map((item) => (
-          <RotatedDiv key={item} onClick={toggle} />
-        ))}
+        <RotatedDiv onClick={toggle} />
       </div>
-      <div className="flexRow">
+      <div
+        className="flexRow"
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          flexDirection: "row",
+        }}
+      >
         {data.map((store, index) => (
           <div key={store.id}>
             <p className="titleStyle">{store.address}</p>
             <p className="subTitleStyle">{store.name}</p>
             <a href={`/page_detail/${store.placeId}`}>
-              <img src={imageUrls[index]} alt="sunflower" />
+              <img
+                style={{ borderRadius: "10px" }}
+                src={imageUrls[index]}
+                alt="sunflower"
+                width="499px"
+                height="450px"
+              />
             </a>
           </div>
         ))}

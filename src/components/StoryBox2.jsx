@@ -7,7 +7,7 @@ const StoryBox2 = ({ storeId }) => {
   const [data, setData] = useState([]);
   const el = data.length === 0 ? { count: 0, username: "Amy" } : data[storeId];
   const getData = () =>
-    axios.get("http://192.168.0.172:8080/favorite").then((response) => {
+    axios.get("http://localhost:8080/favorite").then((response) => {
       console.log(response.data);
       setData(response.data);
     });

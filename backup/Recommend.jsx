@@ -84,7 +84,7 @@ const Recommend = ({ setMyPlaces }) => {
 
     const response = await myAxios(
       "/v2/local/search/keyword.json?query=" + query,
-      "GET",
+      "GET"
     );
 
     console.log(response.body);
@@ -102,13 +102,13 @@ const Recommend = ({ setMyPlaces }) => {
   const sendSelectedPlacesToServer = async () => {
     try {
       const selectedData = placesArray.filter((place) =>
-        selectedPlaces.includes(place.id),
+        selectedPlaces.includes(place.id)
       );
 
       const selectedPlaceIds = selectedData.map((place) => place.id);
 
       const response = await axios.post(
-        "http://192.168.0.172:8080/api/v1/client/submit-selected-places",
+        "http://localhost:8080/api/v1/client/submit-selected-places",
         {
           selectedPlaceIds: selectedPlaceIds,
         },
@@ -116,7 +116,7 @@ const Recommend = ({ setMyPlaces }) => {
           headers: {
             "Content-Type": "application/json",
           },
-        },
+        }
       );
 
       if (response.status === 200) {
@@ -278,7 +278,7 @@ const Recommend = ({ setMyPlaces }) => {
                       {index + 1}
                     </PaginationLink>
                   </PaginationItem>
-                ),
+                )
               )}
               <PaginationItem>
                 <PaginationLink next href="#" />

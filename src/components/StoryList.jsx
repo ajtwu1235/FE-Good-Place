@@ -27,7 +27,7 @@ const StoryList = ({ storeId }) => {
   const userId = storeId;
   const getData = () =>
     axios
-      .get("http://192.168.0.172:8080/favorite/user/" + userId)
+      .get("http://localhost:8080/favorite/user/" + userId)
       .then((response) => {
         console.log(response.data);
         const storeDataArray = response.data.map((item) => item.store); // Extract the 'store' object from each item
@@ -48,7 +48,7 @@ const StoryList = ({ storeId }) => {
           }
 
           return null;
-        }),
+        })
       );
       setImageUrls(urls);
     } catch (error) {
@@ -67,7 +67,7 @@ const StoryList = ({ storeId }) => {
   console.log(data);
 
   const getTest = () =>
-    axios.get("http://192.168.0.172:8080/favorite").then((response) => {
+    axios.get("http://localhost:8080/favorite").then((response) => {
       console.log("test: ", response.data);
     });
 

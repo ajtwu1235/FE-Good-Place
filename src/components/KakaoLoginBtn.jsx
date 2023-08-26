@@ -15,7 +15,7 @@ const KakaoLoginButton = () => {
   const handleKakaoLogin = () => {
     // 카카오 로그인 URL 생성
     const REST_API_KEY = "233b442d79cbe21409405bd3e8e1fc7c";
-    const REDIRECT_URI = "http://192.168.0.172:8080/login/oauth2/code/kakao";
+    const REDIRECT_URI = "http://localhost:8080/login/oauth2/code/kakao";
 
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 

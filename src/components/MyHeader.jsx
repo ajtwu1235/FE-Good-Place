@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"; // Import useEffect
 import LoginModal from "./LoginModal";
 import { Button } from "react-bootstrap";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const MyHeader = () => {
   const [modalShow, setModalShow] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const nav = useNavigate();
   const token = localStorage.getItem("token"); // Get token from local storage
   const userId = localStorage.getItem("userId");
   useEffect(() => {
@@ -93,7 +95,7 @@ const MyHeader = () => {
                       <Button
                         className="login_btn"
                         variant="primary"
-                        onClick={() => setModalShow(true)}
+                        onClick={() => nav("/logout")}
                         style={{
                           backgroundColor: "transparent",
                           border: "none",

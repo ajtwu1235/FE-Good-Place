@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https:192.168.0.172:8080";
+axios.defaults.baseURL = "https:localhost:8080";
 export const springApi = async (url, method, body) => {
   try {
     const { data } = await axios({

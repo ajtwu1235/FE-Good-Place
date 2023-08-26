@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://192.168.0.172:8080/";
+axios.defaults.baseURL = "http://localhost:8080/";
 
 export const apiNoToken = async (url, method, data) => {
   const body = await axios({

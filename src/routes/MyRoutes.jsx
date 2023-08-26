@@ -14,6 +14,7 @@ import Story from "../components/Story";
 import MainRectangle from "../components/MainRectangle";
 import DetailReview from "../components/DetailReview";
 import { useParams } from "react-router";
+import Logout from "../components/Logout";
 const RecommendWrapper = () => {
   const { userId } = useParams();
   const [myPlaces, setMyPlaces] = useState([]); // Initialize as an empty array
@@ -43,6 +44,7 @@ const MyRoutes = () => {
         <Route path="/mainStory/:storeId/:uid" element={<MainStory />}></Route>
       </Route>
       <Route path="/redirect" element={<KakaoLoginRedirect />}></Route>
+      <Route path="/logout" element={<Logout />}></Route>
     </Routes>
   );
 };

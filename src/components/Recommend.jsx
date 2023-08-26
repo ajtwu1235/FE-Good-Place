@@ -91,7 +91,7 @@ const Recommend = ({ setMyPlaces, places }) => {
 
     const response = await myAxios(
       "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + query,
-      "GET",
+      "GET"
     );
 
     console.log(response.body);
@@ -129,14 +129,14 @@ const Recommend = ({ setMyPlaces, places }) => {
 
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://192.168.0.172:8080/api/v1/recommend/submit-selected-places",
+        "http://localhost:8080/api/v1/recommend/submit-selected-places",
         formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
           params: params,
-        },
+        }
       );
 
       if (response.status === 200) {
@@ -152,7 +152,7 @@ const Recommend = ({ setMyPlaces, places }) => {
   const userId = localStorage.getItem("userId");
   const getData = () =>
     axios
-      .get("http://192.168.0.172:8080/api/v1/recommend/" + userId)
+      .get("http://localhost:8080/api/v1/recommend/" + userId)
       .then((response) => {
         console.log(response.data);
         const storeDataArray = response.data.map((item) => item.storeDto); // Use storeDto instead of store
@@ -174,7 +174,7 @@ const Recommend = ({ setMyPlaces, places }) => {
           }
 
           return null;
-        }),
+        })
       );
       setImageUrls(urls);
     } catch (error) {
@@ -399,7 +399,7 @@ const Recommend = ({ setMyPlaces, places }) => {
                       {index + 1}
                     </PaginationLink>
                   </PaginationItem>
-                ),
+                )
               )}
               <PaginationItem>
                 <PaginationLink next href="#" />

@@ -20,7 +20,7 @@ const YourReviewModal = (props) => {
   const token = localStorage.getItem("token");
   const getTokenData = () =>
     axios
-      .get(`http://192.168.0.172:8080/tokenInfo`, {
+      .get(`http://localhost:8080/tokenInfo`, {
         headers: {
           Authorization: token,
         },

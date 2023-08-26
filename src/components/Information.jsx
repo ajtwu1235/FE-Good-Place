@@ -21,7 +21,7 @@ const Information = ({ placeId }) => {
 
   useEffect(() => {
     axios
-      .get(`http://192.168.0.172:8080/api/v1/client/place/${placeId}`)
+      .get(`http://localhost:8080/api/v1/client/place/${placeId}`)
       .then((response) => {
         const data = response.data;
         setStoreData(data);
@@ -37,12 +37,10 @@ const Information = ({ placeId }) => {
   const [totalFav, setTotalFav] = useState(0);
 
   const getTotalFav = () =>
-    axios
-      .get("http://192.168.0.172:8080/favorite/" + placeId)
-      .then((response) => {
-        setTotalFav(response.data);
-        console.log(response);
-      });
+    axios.get("http://localhost:8080/favorite/" + placeId).then((response) => {
+      setTotalFav(response.data);
+      console.log(response);
+    });
 
   //리뷰 수 가져오기
 
@@ -50,7 +48,7 @@ const Information = ({ placeId }) => {
 
   const getTotalReview = () =>
     axios
-      .get("http://192.168.0.172:8080/api/v1/reviews/count/" + placeId)
+      .get("http://localhost:8080/api/v1/reviews/count/" + placeId)
       .then((response) => {
         setTotalReview(response.data);
         console.log(response);
@@ -65,7 +63,7 @@ const Information = ({ placeId }) => {
   const id = storeData.id;
   const postFav = () => {
     axios
-      .post("http://192.168.0.172:8080/favorite", {
+      .post("http://localhost:8080/favorite", {
         userId: userId, // Replace with the actual user ID
         storeId: id, // Replace with the actual store ID
       })

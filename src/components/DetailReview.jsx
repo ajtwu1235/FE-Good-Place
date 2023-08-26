@@ -8,7 +8,7 @@ const DetailReview = () => {
 
   const getData = () =>
     axios
-      .get(`http://192.168.0.172:8080/api/v1/reviews/` + placeId)
+      .get(`http://localhost:8080/api/v1/reviews/` + placeId)
       .then((response) => {
         setData(response.data);
         console.log(response.data.user);

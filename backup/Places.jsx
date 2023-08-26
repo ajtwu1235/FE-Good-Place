@@ -8,12 +8,12 @@ const Places = ({ places }) => {
 
   const handleCheckboxChange = (selectedPlace) => {
     const index = selectedPlaces.findIndex(
-      (place) => place.id === selectedPlace.id,
+      (place) => place.id === selectedPlace.id
     );
 
     if (index !== -1) {
       setSelectedPlaces(
-        selectedPlaces.filter((place) => place.id !== selectedPlace.id),
+        selectedPlaces.filter((place) => place.id !== selectedPlace.id)
       );
     } else {
       setSelectedPlaces([...selectedPlaces, selectedPlace]);
@@ -29,10 +29,10 @@ const Places = ({ places }) => {
       params.append("selectedPlacesData", selectedPlacesData);
 
       const response = await axios.post(
-        "http://192.168.0.172:8080" +
+        "http://localhost:8080" +
           `/api/v1/client/submit-selected-places?${params.toString()}`,
         {},
-        { headers: { "Content-Type": "application/json" } },
+        { headers: { "Content-Type": "application/json" } }
       );
 
       if (response.status === 200) {
@@ -84,7 +84,7 @@ const Places = ({ places }) => {
                       console.log(place);
                     }}
                     checked={selectedPlaces.some(
-                      (selectedPlace) => selectedPlace.id === place.id,
+                      (selectedPlace) => selectedPlace.id === place.id
                     )}
                   />
                 </td>
